@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Money | OptiSave</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/wallet-deposit.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header class="page-header">
+
+        <button class="back-btn"
+            onclick="window.location.href='available-balance.html'">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+        </button>
+
+        <div>
+
+            <h2>Add Money</h2>
+
+            <p>Fund your OptiSave wallet.</p>
+
+        </div>
+
+    </header>
+
+
+    <section id="paymentModeBanner" class="payment-mode-banner" hidden>
+        <i class="fa-solid fa-shield-halved"></i>
+        <div><strong id="paymentModeTitle">Payment mode</strong><p id="paymentModeText"></p></div>
+    </section>
+
+    <!-- CURRENT WALLET -->
+
+    <section class="wallet-card">
+
+        <small>Current Wallet Balance</small>
+
+        <h1 id="currentBalance">
+
+            ₦0
+
+        </h1>
+
+    </section>
+
+    <!-- ENTER AMOUNT -->
+
+    <section class="card">
+
+        <h3>
+
+            <i class="fa-solid fa-money-bill-wave"></i>
+
+            Deposit Amount
+
+        </h3>
+
+        <div class="amount-input">
+
+            <span>₦</span>
+
+            <input
+                type="number"
+                id="depositAmount"
+                placeholder="0">
+
+        </div>
+
+    </section>
+
+    <!-- QUICK AMOUNTS -->
+
+    <section class="card">
+
+        <h3>
+
+            <i class="fa-solid fa-bolt"></i>
+
+            Quick Amount
+
+        </h3>
+
+        <div class="quick-grid">
+
+            <button class="quick-btn" data-amount="5000">
+                ₦5,000
+            </button>
+
+            <button class="quick-btn" data-amount="10000">
+                ₦10,000
+            </button>
+
+            <button class="quick-btn" data-amount="20000">
+                ₦20,000
+            </button>
+
+            <button class="quick-btn" data-amount="50000">
+                ₦50,000
+            </button>
+
+            <button class="quick-btn" data-amount="100000">
+                ₦100,000
+            </button>
+
+            <button class="quick-btn" data-amount="200000">
+                ₦200,000
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- PAYMENT METHOD -->
+
+    <section class="card">
+
+        <h3>
+
+            <i class="fa-solid fa-credit-card"></i>
+
+            Payment Method
+
+        </h3>
+
+        <div class="method-card">
+
+            <i class="fa-solid fa-wallet"></i>
+
+            <div>
+
+                <strong>Paystack Secure Payment</strong>
+
+                <small>Card, bank and supported Paystack payment methods</small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SUMMARY -->
+
+    <section class="summary-card">
+
+        <h3>
+
+            Deposit Summary
+
+        </h3>
+
+        <div class="summary-row">
+
+            <span>Deposit Amount</span>
+
+            <strong id="summaryAmount">
+
+                ₦0
+
+            </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Processing Fee</span>
+
+            <strong>
+
+                ₦0
+
+            </strong>
+
+        </div>
+
+        <div class="summary-row total">
+
+            <span>Total</span>
+
+            <strong id="summaryTotal">
+
+                ₦0
+
+            </strong>
+
+        </div>
+
+    </section>
+
+    <!-- INFO -->
+
+    <section class="info-card">
+
+        <i class="fa-solid fa-circle-info"></i>
+
+        <div>
+
+            <strong>Paystack Secure Deposit</strong>
+
+            <p>
+
+                You will continue to Paystack to complete payment. OptiSave credits your wallet only after the payment is verified by the backend. OptiSave verifies every Paystack payment on the backend before crediting your wallet. Controlled pilot limits are enforced by the server when live testing is enabled.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- BUTTON -->
+
+    <button
+        id="depositBtn"
+        class="primary-btn">
+
+        <i class="fa-solid fa-plus"></i>
+
+        Add Money
+
+    </button>
+
+</div>
+
+<script src="js/api.js?v=1.57"></script><script src="js/auth-guard.js?v=1.57"></script><script src="js/storage.js?v=1.57"></script>
+<script src="js/wallet-deposit.js?v=1.57"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | OptiSave</title>
+
+   <link rel="stylesheet" href="css/global.css?v=1.41">
+<link rel="stylesheet" href="css/ui.css?v=1.41">
+<link rel="stylesheet" href="css/utilities.css?v=1.41">
+<link rel="stylesheet" href="css/profile.css?v=1.43">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="profile-page">
+
+    <!-- ==========================
+         HEADER
+    ========================== -->
+
+    <header class="profile-header">
+
+        <button class="back-btn" id="backBtn">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+
+        <h1>Profile</h1>
+
+    </header>
+
+    <!-- ==========================
+         PROFILE CARD
+    ========================== -->
+
+    <section class="profile-card">
+
+        <div class="profile-photo">
+
+            <i class="fa-solid fa-user"></i>
+
+        </div>
+
+        <h2 id="userName">
+            Adesokan Samson
+        </h2>
+
+
+        <div class="user-id">
+
+            <span>OptiSave ID</span>
+
+            <strong id="userId">
+                OPT-000001
+            </strong>
+
+        </div>
+
+        <div class="kyc-status pending"
+             id="kycStatus">
+
+            <i class="fa-solid fa-circle-exclamation"></i>
+
+            Pending Review
+
+        </div>
+
+    </section>
+
+    <!-- ==========================
+         ACCOUNT
+    ========================== -->
+
+    <div class="section-title">
+
+        ACCOUNT
+
+    </div>
+
+    <div class="menu-card">
+
+        <div class="menu-item"
+             id="personalInfo">
+
+            <div class="menu-left">
+
+                <i class="fa-solid fa-user"></i>
+
+                <div>
+
+                    <h3>Personal Information</h3>
+
+                    <p>
+                        Manage your profile details
+                    </p>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </div>
+
+        <div class="menu-item"
+             id="bankInfo">
+
+            <div class="menu-left">
+
+                <i class="fa-solid fa-building-columns"></i>
+
+                <div>
+
+                    <h3>Bank Information</h3>
+
+                    <p>
+                        Manage linked bank accounts
+                    </p>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </div>
+
+        <div class="menu-item"
+             id="kycVerification">
+
+            <div class="menu-left">
+
+                <i class="fa-solid fa-id-card"></i>
+
+                <div>
+
+                    <h3>KYC Verification</h3>
+
+                    <p>
+                        Verify your identity
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="menu-right">
+
+                <span class="badge pending" id="kycMenuStatus">Not Submitted</span>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================
+         SECURITY
+    ========================== -->
+
+    <div class="section-title">
+
+        SECURITY
+
+    </div>
+
+    <div class="menu-card">
+
+        <div class="menu-item"
+             id="security">
+
+            <div class="menu-left">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <div>
+
+                    <h3>Security</h3>
+
+                    <p>
+                        PIN, Password & Devices
+                    </p>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================
+         PREFERENCES
+    ========================== -->
+
+    <div class="section-title">
+
+        PREFERENCES
+
+    </div>
+
+    <div class="menu-card">
+
+        <div class="menu-item"
+             id="notifications">
+
+            <div class="menu-left">
+
+                <i class="fa-solid fa-bell"></i>
+
+                <div>
+
+                    <h3>Notifications</h3>
+
+                    <p>
+                        Manage alerts
+                    </p>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </div>
+
+        <div class="menu-item">
+
+            <div class="menu-left">
+
+                <i class="fa-solid fa-moon"></i>
+
+                <div>
+
+                    <h3>Dark Mode</h3>
+
+                    <p>
+                        Coming Soon
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================
+         SUPPORT
+    ========================== -->
+
+    <div class="section-title">
+
+        SUPPORT
+
+    </div>
+
+    <div class="menu-card">
+
+        <div class="menu-item"
+             id="helpSupport">
+
+            <div class="menu-left">
+
+                <i class="fa-solid fa-headset"></i>
+
+                <div>
+
+                    <h3>Help & Support</h3>
+
+                    <p>
+                        Contact our support team
+                    </p>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </div>
+
+        <div class="menu-item"
+             id="aboutApp">
+
+            <div class="menu-left">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                <div>
+
+                    <h3>About OptiSave</h3>
+
+                    <p>
+                        Version & Policies
+                    </p>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================
+         LOGOUT
+    ========================== -->
+
+    <button class="logout-btn"
+            id="logoutBtn">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        Logout
+
+    </button>
+
+</div>
+
+<script src="js/api.js?v=1.41"></script><script src="js/auth-guard.js?v=1.41"></script><script src="js/profile.js?v=1.43"></script>
+
+</body>
+</html>

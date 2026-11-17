@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Trusted Devices</title>
+
+<link rel="stylesheet" href="css/theme.css?v=1.41">
+
+<link rel="stylesheet"
+href="css/trusted-devices.css?v=1.41">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="devices-page">
+
+    <!-- HEADER -->
+
+    <header class="devices-header">
+
+        <button
+        class="back-btn"
+        id="backBtn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+        </button>
+
+        <h1>Trusted Devices</h1>
+
+    </header>
+
+
+    <div class="section-title">ACTIVE SESSIONS</div>
+    <p style="color:#64748b;margin:0 0 18px">Only real sessions recorded by OptiSave are shown here. Device names are based on browser information and may be general rather than an exact phone model.</p>
+    <div id="deviceList"></div>
+
+    <!-- LOGOUT BUTTON -->
+
+    <button
+    class="logout-btn"
+    id="logoutDevices">
+
+        Log Out Other Devices
+
+    </button>
+
+</div>
+
+
+
+<!-- REMOVE DEVICE MODAL -->
+
+<div
+class="modal"
+id="removeModal">
+
+    <div class="modal-content">
+
+        <h2>Remove Device</h2>
+
+        <p id="removeText">
+
+            This device will no longer
+            have access to your account.
+
+        </p>
+
+        <div class="modal-buttons">
+
+            <button
+            class="cancel-btn"
+            id="cancelRemove">
+
+                Cancel
+
+            </button>
+
+            <button
+            class="danger-btn"
+            id="confirmRemove">
+
+                Remove
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- LOGOUT MODAL -->
+
+<div
+class="modal"
+id="logoutModal">
+
+    <div class="modal-content">
+
+        <h2>Logout Devices</h2>
+
+        <p>
+
+            You are about to sign out
+            all other devices connected
+            to your account.
+
+        </p>
+
+        <div class="radio-group">
+
+            <label>
+
+                <input
+                type="radio"
+                name="logoutOption"
+                value="keep"
+                checked>
+
+                Keep this device logged in
+
+            </label>
+
+            <label>
+
+                <input
+                type="radio"
+                name="logoutOption"
+                value="all">
+
+                Log out this device too
+
+            </label>
+
+        </div>
+
+        <div class="modal-buttons">
+
+            <button
+            class="cancel-btn"
+            id="cancelLogout">
+
+                Cancel
+
+            </button>
+
+            <button
+            class="danger-btn"
+            id="confirmLogout">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- TOAST -->
+
+<div
+id="toast">
+
+</div>
+
+
+<script src="js/api.js?v=1.41"></script><script src="js/auth-guard.js?v=1.41"></script><script src="js/trusted-devices.js?v=1.41"></script>
+
+</body>
+</html>

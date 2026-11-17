@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>App Wallet | OptiSave</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/wallet.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <!--==================================
+            HEADER
+    ===================================-->
+
+    <header class="page-header">
+
+        <button
+            class="back-btn"
+            id="backBtn">
+
+            <i class="fas fa-arrow-left"></i>
+
+        </button>
+
+        <div>
+
+            <h1>App Wallet</h1>
+
+            <p>
+
+                Deposit, withdraw and manage your available funds.
+
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!--==================================
+            WALLET CARD
+    ===================================-->
+
+    <section class="wallet-card">
+
+        <span class="wallet-title">
+
+            Available Balance
+
+        </span>
+
+        <h1 id="walletBalance">
+
+            ₦0
+
+        </h1>
+
+        <p>
+
+            Available for savings and withdrawal
+
+        </p>
+
+    </section>
+
+
+
+    <!--==================================
+            QUICK ACTIONS
+    ===================================-->
+
+    <section class="wallet-actions">
+
+        <button
+            class="action-btn"
+            id="depositBtn">
+
+            <i class="fas fa-arrow-down"></i>
+
+            <span>Deposit</span>
+
+        </button>
+
+        <button
+            class="action-btn"
+            id="withdrawBtn">
+
+            <i class="fas fa-arrow-up"></i>
+
+            <span>Withdraw</span>
+
+        </button>
+
+        <button
+            class="action-btn"
+            id="historyBtn">
+
+            <i class="fas fa-clock-rotate-left"></i>
+
+            <span>History</span>
+
+        </button>
+
+    </section>
+
+
+
+    <!--==================================
+            SUMMARY
+    ===================================-->
+
+    <section class="summary-card">
+
+        <div class="summary-row">
+
+            <span>Total Deposited</span>
+
+            <strong id="totalDeposited">
+
+                ₦0
+
+            </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Total Withdrawn</span>
+
+            <strong id="totalWithdrawn">
+
+                ₦0
+
+            </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Total Locked</span>
+
+            <strong id="totalLocked">
+
+                ₦0
+
+            </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Daily Savings</span>
+
+            <strong id="totalDaily">
+
+                ₦0
+
+            </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Allocation</span>
+
+            <strong id="totalAllocated">
+
+                ₦0
+
+            </strong>
+
+        </div>
+
+    </section>
+
+
+
+    <!--==================================
+        RECENT TRANSACTIONS
+    ===================================-->
+
+    <section class="transactions-section">
+
+        <div class="section-title">
+
+            <h2>
+
+                Recent Transactions
+
+            </h2>
+
+            <button
+                id="viewAllBtn">
+
+                View All
+
+            </button>
+
+        </div>
+
+        <div id="transactionList">
+
+            <!-- Loaded by wallet.js -->
+
+        </div>
+
+    </section>
+
+
+
+    <!--==================================
+        EMPTY STATE
+    ===================================-->
+
+    <section
+        class="empty-state"
+        id="emptyTransactions">
+
+        <i class="fas fa-wallet"></i>
+
+        <h3>
+
+            No Transactions Yet
+
+        </h3>
+
+        <p>
+
+            Your deposits, withdrawals and savings activities will appear here.
+
+        </p>
+
+    </section>
+
+</div>
+
+
+
+<script src="js/api.js"></script><script src="js/auth-guard.js"></script>
+
+<script src="js/storage.js"></script>
+
+<script src="js/wallet.js"></script>
+
+</body>
+
+</html>

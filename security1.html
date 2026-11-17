@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Security | OptiSave</title>
+
+    <link rel="stylesheet" href="css/theme.css?v=1.41">
+    <link rel="stylesheet" href="css/security1.css?v=1.41">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="security-page">
+
+    <!-- HEADER -->
+
+    <header class="security-header">
+
+        <button id="backBtn" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+
+        <h1>Security</h1>
+
+    </header>
+
+
+    <!-- SECURITY CARD -->
+
+    <section class="security-card">
+
+        <!-- Change Password -->
+
+        <div class="security-item" id="changePassword">
+
+            <div class="item-left">
+
+                <div class="icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <div>
+
+                    <h3>Change Password</h3>
+
+                    <p>Update your login password</p>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </div>
+
+
+        <!-- Transaction PIN -->
+
+        <div class="security-item" id="changePin">
+
+            <div class="item-left">
+
+                <div class="icon">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+
+                <div>
+
+                    <h3>Transaction PIN</h3>
+
+                    <p>Change your 4-digit PIN</p>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </div>
+
+
+        <!-- Biometric -->
+
+        <div class="security-item">
+
+            <div class="item-left">
+
+                <div class="icon">
+                    <i class="fa-solid fa-fingerprint"></i>
+                </div>
+
+                <div>
+
+                    <h3>Biometric Login</h3>
+
+                    <p>Fingerprint / Face ID</p>
+
+                </div>
+
+            </div>
+
+            <label class="switch">
+
+                <input type="checkbox" id="biometricToggle">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <!-- Two Factor -->
+
+        <div class="security-item">
+
+            <div class="item-left">
+
+                <div class="icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div>
+
+                    <h3>Two-Factor Authentication</h3>
+
+                    <p>Extra protection for your account</p>
+
+                </div>
+
+            </div>
+
+            <label class="switch">
+
+                <input type="checkbox" id="twoFactorToggle">
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+        <!-- Trusted Devices -->
+
+        <div class="security-item" id="trustedDevices">
+
+            <div class="item-left">
+
+                <div class="icon">
+                    <i class="fa-solid fa-laptop"></i>
+                </div>
+
+                <div>
+
+                    <h3>Trusted Devices</h3>
+
+                    <p>Manage logged-in devices</p>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </div>
+
+
+        <!-- Login Activity -->
+
+        <div class="security-item" id="loginActivity">
+
+            <div class="item-left">
+
+                <div class="icon">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+
+                <div>
+
+                    <h3>Login Activity</h3>
+
+                    <p>View recent account activity</p>
+
+                </div>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </div>
+
+
+        <!-- Delete Account -->
+
+        <button id="deleteAccountBtn" class="delete-btn">
+
+            <i class="fa-solid fa-trash"></i>
+
+            Delete Your Account
+
+        </button>
+
+    </section>
+
+</div>
+
+
+<!-- PASSWORD MODAL -->
+
+<div class="modal" id="passwordModal">
+
+    <div class="modal-content">
+
+        <h2>Change Password</h2>
+
+        <input
+            type="password"
+            id="currentPassword"
+            placeholder="Current Password">
+
+        <input
+            type="password"
+            id="newPassword"
+            placeholder="New Password">
+
+        <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm Password">
+
+        <button id="updatePassword">
+            Update Password
+        </button>
+
+        <button id="closePasswordModal" class="cancel-btn">
+            Cancel
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- PIN MODAL -->
+
+<div class="modal" id="pinModal">
+
+    <div class="modal-content">
+
+        <h2>Change Transaction PIN</h2>
+
+        <input
+            type="password"
+            maxlength="4"
+            id="currentPin"
+            placeholder="Current PIN">
+
+        <input
+            type="password"
+            maxlength="4"
+            id="newPin"
+            placeholder="New PIN">
+
+        <input
+            type="password"
+            maxlength="4"
+            id="confirmPin"
+            placeholder="Confirm PIN">
+
+        <button id="updatePin">
+            Update PIN
+        </button>
+
+        <button id="closePinModal" class="cancel-btn">
+            Cancel
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+     CONFIRM ACTION MODAL
+========================================== -->
+
+<div class="modal" id="confirmModal">
+
+    <div class="modal-content">
+
+        <h2 id="confirmTitle">
+
+            Confirm Action
+
+        </h2>
+
+        <p id="confirmMessage">
+
+            Are you sure you want to continue?
+
+        </p>
+
+        <div class="modal-buttons">
+
+            <button
+            class="cancel-btn"
+            id="confirmCancel">
+
+                Cancel
+
+            </button>
+
+            <button
+            class="delete-btn"
+            id="confirmContinue">
+
+                Continue
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div id="toast"></div>
+
+<script src="js/api.js?v=1.41"></script><script src="js/auth-guard.js?v=1.41"></script><script src="js/security1.js?v=1.41"></script>
+
+</body>
+</html>

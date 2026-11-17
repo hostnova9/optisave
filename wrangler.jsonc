@@ -1,0 +1,21 @@
+{
+  "name": "optisave",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-17",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {"directory":"./dist", "binding":"ASSETS", "run_worker_first":true, "html_handling":"none"},
+  "vars": {
+    "OPTISAVE_CLOUD":"true", "NODE_ENV":"production", "PAYMENT_MODE":"test",
+    "ENABLE_DEV_WALLET":"false", "FINCRA_SANDBOX_ENABLED":"false",
+    "JWT_EXPIRES_IN":"7d", "ADMIN_JWT_EXPIRES_IN":"8h",
+    "AUTH_EMAIL_FROM":"OptiSave <support@myoptisave.site>",
+    "COMPANY_EMAIL_FROM":"OptiSave <support@myoptisave.site>",
+    "BROADCAST_EMAIL_FROM":"OptiSave <support@myoptisave.site>",
+    "COMPANY_EMAIL_REPLY_TO":"optisavesolution@gmail.com"
+  },
+  "triggers": {"crons":["* * * * *"]},
+  "observability": {"enabled":true},
+  "keep_vars":true
+}
