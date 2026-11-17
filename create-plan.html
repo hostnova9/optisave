@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Create New Plan</title>
+
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/create-plan.css">
+
+</head>
+
+<body>
+
+<div class="page create-plan-shell">
+
+    <!-- Header -->
+
+    <div class="page-header">
+
+        <button
+class="back-btn"
+onclick="goBack()">
+
+            ←
+
+        </button>
+
+        <div class="page-title">
+
+            <h1>Create New Plan</h1>
+
+            <p>
+                Choose the type of savings plan you want to create.
+            </p>
+
+        </div>
+
+    </div>
+
+    <section class="plan-picker-intro"><span>OPTISAVE PLANS</span><h2>Choose how you want to save</h2><p>Pick a plan that matches your goal. You can review every detail before money moves.</p></section>
+
+    <div class="plan-grid">
+
+    <!-- Lock Only -->
+
+    <div
+    class="plan-card"
+    onclick="window.location.href='lock-plan.html'">
+
+        <div class="plan-icon">
+
+            🔒
+
+        </div>
+
+        <h2>Lock Only</h2>
+
+        <p>
+
+            Lock your money until maturity.
+            No allocation.
+
+        </p>
+        <span class="plan-action">Choose Lock Only →</span>
+
+    </div>
+
+    <!-- Daily Saving -->
+
+    <div
+    class="plan-card"
+    onclick="window.location.href='daily-saving.html'">
+
+        <div class="plan-icon">
+
+            📅
+
+        </div>
+
+        <h2>Daily Savings</h2>
+
+        <p>
+
+            Save a fixed amount every day
+            for your chosen duration.
+
+        </p>
+        <span class="plan-action">Choose Daily Savings →</span>
+
+    </div>
+
+    <!-- Lock & Allocation -->
+
+    <div
+    class="plan-card"
+    onclick="window.location.href='lock-allocation.html'">
+
+        <div class="plan-icon">
+
+            ⚡
+
+        </div>
+
+        <h2>Lock + Allocation</h2>
+
+        <p>
+
+            Lock your savings while
+            receiving scheduled allocations.
+
+        </p>
+        <span class="plan-action">Choose Lock + Allocation →</span>
+
+    </div>
+
+    </div>
+</div>
+
+<script src="js/api.js"></script><script src="js/auth-guard.js"></script><script src="js/navigation.js"></script>
+<script src="js/create-plan.js"></script>
+
+</body>
+</html>

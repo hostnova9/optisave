@@ -1,0 +1,22 @@
+OPTISAVE v1.67 - WEMA BVN STEP 1 SANDBOX MAPPING
+
+1. Keep your existing .env file. The ZIP intentionally does not contain .env.
+2. Replace the project files with v1.67.
+3. Run:
+   npm install
+   npm start
+4. In local .env / Render Environment add:
+   WEMA_SANDBOX_ENABLED=true
+   WEMA_API_KEY=YOUR_WEMA_SANDBOX_X_API_KEY
+   WEMA_API_BASE_URL=https://apiplayground.alat.ng
+   APP_BASE_URL=https://myoptisave.site
+5. WEMA_API_BASE_URL now defaults to https://apiplayground.alat.ng in sandbox mode, so the explicit variable is optional but recommended.
+6. Login to Admin -> Bank Integration Lab.
+7. Use "BVN Tier-1 Account Creation" to test the exact Wema Step 1 endpoint:
+   POST /account-creation/api/CustomerAccount/PostPartnershipAccountCreationWithBvn
+   Header: x-api-key
+   Body: phoneNumber, email, bvn
+8. The Wema API key remains server-side. BVN and other sensitive fields are redacted from the sandbox audit log.
+9. This lab remains isolated from real OptiSave customer balances and does not credit/debit the production wallet.
+
+NEXT: map Wema BVN Step 2 and Step 3 exact endpoints once confirmed from the Playground documentation, then complete full BVN account lifecycle testing.

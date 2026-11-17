@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Login Activity | OptiSave</title>
+
+    <link
+        rel="stylesheet"
+        href="css/theme.css?v=1.41">
+
+    <link
+        rel="stylesheet"
+        href="css/login-activity.css?v=1.41">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="activity-page">
+
+    <!-- ===========================
+         HEADER
+    ============================ -->
+
+    <header class="activity-header">
+
+        <button
+            id="backBtn"
+            class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+        </button>
+
+        <h1>Login Activity</h1>
+
+    </header>
+
+
+    <!-- ===========================
+         SEARCH
+    ============================ -->
+
+    <div class="search-box">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            type="text"
+            id="searchActivity"
+            placeholder="Search activity...">
+
+    </div>
+
+
+    <!-- ===========================
+         TODAY
+    ============================ -->
+
+    <div class="activity-group">
+
+        <h3 class="group-title">
+
+            TODAY
+
+        </h3>
+
+        <div id="todayActivity">
+
+        </div>
+
+    </div>
+
+
+    <!-- ===========================
+         YESTERDAY
+    ============================ -->
+
+    <div class="activity-group">
+
+        <h3 class="group-title">
+
+            YESTERDAY
+
+        </h3>
+
+        <div id="yesterdayActivity">
+
+        </div>
+
+    </div>
+
+
+    <!-- ===========================
+         THIS WEEK
+    ============================ -->
+
+    <div class="activity-group">
+
+        <h3 class="group-title">
+
+            THIS WEEK
+
+        </h3>
+
+        <div id="weekActivity">
+
+        </div>
+
+    </div>
+
+
+    <!-- ===========================
+         EMPTY STATE
+    ============================ -->
+
+    <div
+        class="empty-state"
+        id="emptyState">
+
+        <i class="fa-solid fa-clock-rotate-left"></i>
+
+        <h2>No Activity Found</h2>
+
+        <p>
+
+            Your recent account activity
+            will appear here.
+
+        </p>
+
+    </div>
+
+
+    <!-- ===========================
+         CLEAR HISTORY
+    ============================ -->
+
+    <button
+        id="clearHistoryBtn"
+        class="danger-btn">
+
+        <i class="fa-solid fa-trash"></i>
+
+        Clear Activity History
+
+    </button>
+
+</div>
+
+
+<!-- ===========================
+     CLEAR HISTORY MODAL
+=========================== -->
+
+<div
+    class="modal"
+    id="clearHistoryModal">
+
+    <div class="modal-content">
+
+        <h2>
+
+            Clear Activity History
+
+        </h2>
+
+        <p>
+
+            This will remove your login
+            activity history from this device.
+
+        </p>
+
+        <div class="modal-buttons">
+
+            <button
+                id="cancelClear"
+                class="cancel-btn">
+
+                Cancel
+
+            </button>
+
+            <button
+                id="confirmClear"
+                class="delete-btn">
+
+                Clear History
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ===========================
+     TOAST
+=========================== -->
+
+<div id="toast"></div>
+
+
+<script src="js/api.js?v=1.41"></script><script src="js/auth-guard.js?v=1.41"></script><script src="js/login-activity.js?v=1.41"></script>
+
+</body>
+</html>

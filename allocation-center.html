@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Allocation Center | OptiSave</title>
+<link rel="stylesheet" href="css/global.css"><link rel="stylesheet" href="css/theme.css"><link rel="stylesheet" href="css/allocation-center.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></head><body>
+<div class="allocation-page">
+<header class="page-header"><button class="back-btn" type="button" onclick="window.location.href='dashboard.html'"><i class="fas fa-arrow-left"></i></button><div><h1>Allocation Center</h1><p>Track your real Lock &amp; Allocation schedule</p></div></header>
+
+<section id="emptyAllocation" class="empty-allocation" hidden>
+<div class="empty-icon"><i class="fas fa-calendar-xmark"></i></div><h2>No active allocation plan</h2><p>You haven't created a Lock &amp; Allocation plan yet. Daily Savings deductions are tracked separately.</p><a href="lock-allocation.html">Create Lock &amp; Allocation Plan</a>
+</section>
+
+<div id="allocationContent" hidden>
+<section class="allocation-switcher" id="allocationSwitcher" hidden><div><small>ACTIVE ALLOCATION PLANS</small><strong id="allocationPlanCount">1 plan</strong></div><select id="allocationPlanSelect"></select></section>
+<section class="next-card"><span class="badge" id="nextStatus">Scheduled</span><h4>Next Allocation</h4><h2 id="nextAmount">₦0</h2><p id="planName">—</p><div class="allocation-date"><div><small>Date</small><strong id="nextDate">—</strong></div><div><small>Time</small><strong id="nextTime">5:00 AM</strong></div></div><div class="live-countdown"><small>NEXT RELEASE IN</small><strong id="allocationCountdown">--:--:--</strong></div></section>
+<section class="progress-card"><h3>Allocation Progress</h3><div class="progress"><div class="progress-fill" id="progressFill"></div></div><div class="progress-info"><span id="progressAllocated">0% Released</span><span id="progressRemaining">100% Remaining</span></div></section>
+<section class="breakdown-card"><h3>Allocation Breakdown</h3><div class="breakdown-grid">
+<div class="info-card"><small>Original Lock</small><h4 id="originalLock">₦0</h4></div><div class="info-card"><small>Allocation Pool</small><h4 id="allocationPool">₦0</h4></div><div class="info-card"><small>Released So Far</small><h4 id="releasedSoFar">₦0</h4></div><div class="info-card"><small>Allocation Remaining</small><h4 id="allocationRemaining">₦0</h4></div><div class="info-card"><small>Still Locked</small><h4 id="stillLocked">₦0</h4></div><div class="info-card"><small>Allocation Rate</small><h4 id="allocationRate">0%</h4></div></div></section>
+<section class="quick-actions"><button class="action-btn" id="viewPlanBtn"><i class="fas fa-lock"></i> View Plan</button><button class="action-btn secondary" id="historyBtn"><i class="fas fa-clock-rotate-left"></i> Transaction History</button></section>
+<section class="timeline-card"><h3>Allocation Activity</h3><div id="timeline"></div></section>
+<section class="stats-card"><h3>Allocation Statistics</h3><div class="stats-grid"><div class="stat-box"><small>Release Amount</small><h4 id="dailyRelease">₦0</h4></div><div class="stat-box"><small>Frequency</small><h4 id="releaseFrequency">Daily</h4></div><div class="stat-box"><small>Releases Left</small><h4 id="releasesLeft">0</h4></div><div class="stat-box"><small>Weekend Releases</small><h4 id="weekendRule">Included</h4></div><div class="stat-box"><small>Maturity Date</small><h4 id="maturityDate">—</h4></div></div></section>
+<section class="optiguide-card"><div class="guide-icon"><i class="fas fa-lightbulb"></i></div><div class="guide-text"><h3>OptiGuide</h3><p id="guideText">Your allocation details will appear here.</p></div></section>
+</div><div style="height:40px"></div></div>
+<script src="js/api.js"></script><script src="js/auth-guard.js"></script><script src="js/storage.js?v=1.27"></script><script src="js/allocation-center.js?v=1.27"></script></body></html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Active Locked Plans | OptiSave</title>
+
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/active-locked-plans.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header class="page-header">
+
+        <button class="back-btn"
+        onclick="window.location.href='dashboard.html'">
+
+            <i class="fas fa-arrow-left"></i>
+
+        </button>
+
+        <div>
+
+            <h2>Active Locked Plans</h2>
+
+            <p>
+                Manage all your active savings plans.
+            </p>
+
+        </div>
+
+    </header>
+
+    <!-- SUMMARY -->
+
+    <section class="summary-grid">
+
+        <div class="summary-card">
+
+            <small>Total Plans</small>
+
+            <h3 id="totalPlans">
+                0
+            </h3>
+
+        </div>
+
+        <div class="summary-card">
+
+            <small>Total Locked</small>
+
+            <h3 id="totalLocked">
+                ₦0
+            </h3>
+
+        </div>
+
+        <div class="summary-card">
+
+            <small>Scheduled Release</small>
+
+            <h3 id="todayAllocation">
+                ₦0
+            </h3>
+
+        </div>
+
+        <div class="summary-card">
+
+            <small>Daily Savings</small>
+
+            <h3 id="dailyPlans">
+                0
+            </h3>
+
+        </div>
+
+    </section>
+
+    <!-- FILTERS -->
+
+    <section class="filter-section">
+
+        <button
+        class="filter-btn active"
+        data-filter="all">
+
+            All
+
+        </button>
+
+        <button
+        class="filter-btn"
+        data-filter="daily">
+
+            Daily Saving
+
+        </button>
+
+        <button
+        class="filter-btn"
+        data-filter="lock">
+
+            Lock Only
+
+        </button>
+
+        <button
+        class="filter-btn"
+        data-filter="allocation">
+
+            Lock + Allocation
+
+        </button>
+
+    </section>
+
+    <!-- PLANS -->
+
+    <section
+    id="plansContainer"
+    class="plans-container">
+
+    </section>
+
+    <!-- EMPTY STATE -->
+
+    <section
+    id="emptyState"
+    class="empty-state"
+    style="display:none;">
+
+        <div class="empty-icon">
+
+            <i class="fas fa-piggy-bank"></i>
+
+        </div>
+
+        <h3>No Active Plans</h3>
+
+        <p>
+
+            You haven't created any plan yet.
+
+        </p>
+
+        <button
+        class="create-btn"
+        onclick="window.location.href='create-plan.html'">
+
+            <i class="fas fa-plus"></i>
+
+            Create Plan
+
+        </button>
+
+    </section>
+
+</div>
+
+<script src="js/api.js"></script><script src="js/auth-guard.js"></script><script src="js/storage.js?v=1.68"></script>
+<script src="js/active-locked-plans.js?v=1.68"></script>
+
+
+<div id="lockAllocationModal" class="rule-modal" hidden>
+ <div class="rule-modal-card">
+  <button id="closeLockAllocationModal" class="rule-modal-close">&times;</button>
+  <h3>Allocate 50% of Locked Funds</h3>
+  <p id="lockAllocationSummary"></p>
+  <div class="rule-grid">
+   <label>Release period<select id="lockAllocationDays"><option value="7">7 days</option><option value="14">14 days</option><option value="30" selected>30 days</option><option value="60">60 days</option></select></label>
+   <label>Frequency<select id="lockAllocationFrequency"><option value="daily" selected>Daily</option><option value="weekly">Weekly</option></select></label>
+   <label>Start<select id="lockAllocationStartMode"><option value="now" selected>Start Now</option><option value="later">Choose Start Date</option></select></label>
+  </div>
+  <label id="lockAllocationDateWrap" hidden>Allocation start date<input type="date" id="lockAllocationStartDate"></label>
+  <label class="rule-check"><input type="checkbox" id="lockAllocationWeekend"> Exclude weekends</label>
+  <div class="rule-warning">This does not charge your wallet again. 50% becomes the allocation pool and 50% remains locked. Emergency access later releases 50% of what remains locked.</div>
+  <button id="confirmLockAllocation" class="rule-primary">Start 50% Allocation</button>
+ </div>
+</div>
+</body>
+</html>

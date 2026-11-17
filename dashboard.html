@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- ==========================================
+            META
+    =========================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>OptiSave Dashboard</title>
+
+    <!-- ==========================================
+            GOOGLE FONT
+    =========================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- ==========================================
+            FONT AWESOME
+    =========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- ==========================================
+            CSS
+    =========================================== -->
+
+    <link rel="stylesheet" href="css/global.css?v=1.41">
+<link rel="stylesheet" href="css/ui.css?v=1.41">
+<link rel="stylesheet" href="css/utilities.css?v=1.41">
+<link rel="stylesheet" href="css/dashboard.css?v=1.45">
+
+</head>
+
+<body>
+
+<!-- ==========================================
+        SIDEBAR OVERLAY
+========================================== -->
+
+<div
+    class="overlay"
+    id="overlay">
+
+</div>
+
+<!-- ==========================================
+        SIDEBAR
+========================================== -->
+
+<aside
+    class="sidebar"
+    id="sidebar">
+
+    <!-- Logo -->
+
+    <div class="sidebar-header">
+
+        <h2>
+
+            <span class="brand-opti">Opti</span><span class="brand-save">Save</span>
+
+        </h2>
+
+        <p>
+
+            Save Better. Live Better.
+
+        </p>
+
+        <div class="sidebar-welcome sidebar-profile-card" id="sidebarWelcome">
+            <div class="sidebar-avatar-ring"><div class="sidebar-avatar" id="sidebarAvatar">OS</div></div>
+            <strong id="sidebarHello">Hello 👋</strong>
+            <span id="sidebarDateTime">--</span>
+            <small id="sidebarLastLogin">Last login: --</small>
+        </div>
+
+    </div>
+
+    <!-- Navigation -->
+
+    <nav class="sidebar-menu"><a href="dashboard.html" class="active sidebar-home-link"><i class="fa-solid fa-house"></i><span>Overview</span></a>
+
+        <a href="wallet-deposit.html">
+
+            <i class="fa-solid fa-wallet"></i>
+
+            <span>Deposit</span>
+
+        </a>
+
+        <a href="wallet-withdraw.html">
+
+            <i class="fa-solid fa-money-bill-wave"></i>
+
+            <span>Withdraw</span>
+
+        </a>
+
+        <a href="active-locked-plans.html">
+
+            <i class="fa-solid fa-lock"></i>
+
+            <span>Locked Savings</span>
+
+        </a>
+
+        <a href="daily-saving.html">
+
+            <i class="fa-solid fa-piggy-bank"></i>
+
+            <span>Daily Savings</span>
+
+        </a>
+
+        <a href="allocation-center.html">
+
+            <i class="fa-solid fa-percent"></i>
+
+            <span>Allocation Plans</span>
+
+        </a>
+
+        <a href="transactions.html">
+
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+            <span>Transactions</span>
+
+        </a>
+
+        <a href="security1.html">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <span>Security</span>
+
+        </a>
+
+        <a href="profile.html">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>Profile & Settings</span>
+
+        </a>
+
+    </nav>
+
+    <!-- Logout -->
+
+    <div class="sidebar-footer">
+
+        <button
+            id="logoutBtn"
+            class="logout-btn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</aside>
+
+<!-- ==========================================
+        MAIN WRAPPER
+========================================== -->
+
+<div class="main-wrapper">
+
+    <!-- ==========================================
+            HEADER
+    =========================================== -->
+
+    <header class="dashboard-header">
+
+        <div class="header-top">
+
+            <!-- Hamburger -->
+
+            <button
+                id="menuBtn"
+                class="header-btn">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+            <!-- Right Actions -->
+
+            <div class="header-actions">
+
+                <!-- Notification -->
+
+                <button
+                    id="notificationBtn"
+                    class="header-btn">
+
+                    <i class="fa-solid fa-bell"></i>
+                    <span id="notificationBadge" class="notification-badge" hidden>0</span>
+                </button>
+
+                <!-- Profile -->
+
+                <button
+                    id="profileBtn"
+                    class="profile-btn"
+                    aria-label="Open profile">
+                    <span class="profile-avatar" id="headerProfileAvatar" aria-hidden="true">OS</span>
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="notificationPanel" class="notification-panel" hidden>
+            <div class="notification-panel-head"><div><b>Notifications</b><small id="notificationSubtext">You're all caught up</small></div><button id="markAllRead">Mark all read</button></div>
+            <div id="notificationList" class="notification-list"></div>
+        </div>
+
+        <!-- Welcome -->
+
+        <div class="welcome-area">
+
+            <h1>
+
+                Welcome Back, <span id="welcomeFirstName">Saver</span> 👋
+
+            </h1>
+
+            <p>
+
+                Let's help you grow your savings today.
+
+            </p>
+
+        </div>
+
+    </header>
+
+<!-- ==========================================
+        SECTION 3 - SUMMARY CARDS
+========================================== -->
+
+<section class="summary-section">
+
+    <!-- Available Balance -->
+
+    <div class="summary-card wallet-card" id="walletCard">
+
+        <div class="card-header">
+
+            <div class="summary-icon">
+                <i class="fas fa-wallet"></i>
+            </div>
+
+            <span class="summary-title">
+                Available Balance
+            </span>
+
+        </div>
+
+        <div class="card-body">
+
+            <h2 id="availableBalance">
+                ₦0.00
+            </h2>
+
+            <p id="availableInfo">
+                Ready to withdraw
+            </p>
+
+        </div>
+
+        <div class="card-footer">
+
+            <button class="action-chip" id="depositBtn">
+
+                <i class="fas fa-plus"></i>
+
+                Deposit
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Active Locked Plans -->
+
+    <div class="summary-card plans-card" id="plansCard">
+
+        <div class="card-header">
+
+            <div class="summary-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+
+            <span class="summary-title">
+                Active Locked Plans
+            </span>
+
+        </div>
+
+        <div class="card-body">
+
+            <h2 id="activePlans">
+                0
+            </h2>
+
+            <p id="activePlansInfo">
+                No active plan
+            </p>
+
+        </div>
+
+        <div class="card-footer">
+
+            <button class="action-chip" id="createPlanBtn">
+
+                <i class="fas fa-plus"></i>
+
+                Create Plan
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Next Allocation: compact countdown only -->
+
+    <div class="summary-card countdown-card" id="countdownCard">
+        <div class="card-header">
+            <div class="summary-icon"><i class="fas fa-clock"></i></div>
+            <span class="summary-title"><span id="allocationCardTitle">Next Allocation</span></span>
+        </div>
+        <div class="card-body countdown-only-body">
+            <span class="countdown-label" id="scheduleCountdownLabel">NEXT RELEASE IN</span>
+            <h2 id="allocationCountdown">--:--:--</h2>
+        </div>
+    </div>
+
+</section>
+
+  <!-- ==========================================
+        SECTION 4 - SMART INSIGHT BANNER
+========================================== -->
+
+<section class="smart-banner">
+
+    <div class="banner-content">
+
+        <div class="banner-icon">
+
+            <i class="fas fa-lightbulb"></i>
+
+        </div>
+
+        <div class="banner-text">
+
+            <h3 id="bannerTitle">
+
+                Welcome to OptiSave!
+
+            </h3>
+
+            <p id="bannerMessage">
+
+                Create your first locked savings plan and begin your journey to financial discipline.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <button id="bannerAction">
+
+        Create Plan
+
+        <i class="fas fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+<!-- QUICK ACTIONS -->
+<section class="quick-actions-section dashboard-quick-actions">
+  <div class="quick-actions-head">
+    <div><span class="eyebrow">SHORTCUTS</span><h2>Quick Actions</h2></div>
+    <p>Move money or start a savings plan in one tap.</p>
+  </div>
+  <div class="action-grid quick-action-grid">
+    <a class="action-card quick-action-card" href="wallet-deposit.html">
+      <span class="quick-action-icon deposit-action"><i class="fa-solid fa-arrow-down"></i></span>
+      <span><strong>Deposit</strong><small>Add money to your wallet</small></span>
+      <i class="fa-solid fa-chevron-right quick-arrow"></i>
+    </a>
+    <a class="action-card quick-action-card" href="wallet-withdraw.html">
+      <span class="quick-action-icon withdraw-action"><i class="fa-solid fa-arrow-up"></i></span>
+      <span><strong>Withdraw</strong><small>Access available balance</small></span>
+      <i class="fa-solid fa-chevron-right quick-arrow"></i>
+    </a>
+    <a class="action-card quick-action-card" href="create-plan.html">
+      <span class="quick-action-icon plan-action"><i class="fa-solid fa-plus"></i></span>
+      <span><strong>Create Plan</strong><small>Lock, allocate or save daily</small></span>
+      <i class="fa-solid fa-chevron-right quick-arrow"></i>
+    </a>
+  </div>
+</section>
+
+  <!--==========================================
+        SECTION 5 - MY PLANS
+===========================================-->
+
+<section class="plans-section">
+
+    <div class="section-title">
+
+        <h2>My Plans</h2>
+
+        <a href="active-locked-plans.html" class="view-all">
+
+            View All
+
+            <i class="fas fa-chevron-right"></i>
+
+        </a>
+
+    </div>
+
+    <div class="plans-list">
+
+        <!-- PLAN CARD -->
+
+        <div class="plan-card">
+
+            <div class="plan-top">
+
+                <div class="plan-info">
+
+                    <div class="plan-icon">
+
+                        🏠
+
+                    </div>
+
+                    <div>
+
+                        <h3>Rent Savings</h3>
+
+                        <span>₦100,000 Locked</span>
+
+                    </div>
+
+                </div>
+
+                <button class="plan-view">
+
+                    View
+
+                </button>
+
+            </div>
+
+            <div class="progress-area">
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill" style="width:65%;"></div>
+
+                </div>
+
+                <small>
+
+                    65% Completed
+
+                </small>
+
+            </div>
+
+            <div class="plan-bottom">
+
+                <div>
+
+                    <strong>15</strong>
+
+                    <span>Days Left</span>
+
+                </div>
+
+                <div>
+
+                    <span class="status active">
+
+                        🟢 Allocation Active
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Detailed activity lives in Transactions. -->
+
+
+</main>
+
+</div>
+
+<!-- ==========================================
+        TOAST MESSAGE
+========================================== -->
+
+<div
+    class="toast"
+    id="toast">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span id="toastMessage"></span>
+
+</div>
+
+<!-- ==========================================
+        LOADING SCREEN
+========================================== -->
+
+<div
+    class="loading-screen"
+    id="loadingScreen">
+
+    <div class="loader"></div>
+
+</div>
+
+<!-- ==========================================
+        JAVASCRIPT
+========================================== -->
+
+<script src="js/api.js?v=1.41"></script><script src="js/auth-guard.js?v=1.41"></script><script src="js/storage.js?v=1.68"></script>
+
+<script src="js/sidebar.js?v=1.42"></script>
+
+<script src="js/dashboard.js?v=1.68"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+OPTISAVE v1.58 INSTALL / UPDATE
+
+1. Back up your current OptiSave folder and database.
+2. Replace the project files with this v1.58 folder.
+3. Keep your real .env file. Do NOT overwrite it with .env.example.
+4. Run: npm install
+5. Run: npm start
+
+The server automatically applies the new broadcast tables/columns from server/schema.sql at startup.
+
+To use in-app admin broadcasts:
+- No extra service is required.
+- Login to admin.html and open Communications.
+
+To ALSO send broadcasts by email:
+- Configure RESEND_API_KEY
+- Configure BROADCAST_EMAIL_FROM (example: OptiSave <support@myoptisave.site>)
+- Keep APP_BASE_URL=https://myoptisave.site
+- Your sending domain must be approved by the email provider.
+
+IMPORTANT:
+- Keep PAYMENT_MODE=test until you intentionally move to the controlled live pilot.
+- Do not place Paystack secret keys or email API keys in frontend files.

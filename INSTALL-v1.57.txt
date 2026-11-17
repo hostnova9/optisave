@@ -1,0 +1,30 @@
+OPTISAVE v1.57 — CONTROLLED LIVE PILOT GUARD
+
+1. Stop the current OptiSave server (Ctrl+C).
+2. Keep a backup of your current working OptiSave folder.
+3. Extract this build and copy your EXISTING .env into the new OptiSave folder.
+4. While you are still using Paystack test keys, leave:
+      PAYMENT_MODE=test
+   Your existing test deposit/withdrawal flow will continue normally.
+5. When Paystack approves live payments, switch ONLY your private server .env to:
+      NODE_ENV=production
+      ENABLE_DEV_WALLET=false
+      PAYMENT_MODE=pilot
+      PAYSTACK_SECRET_KEY=sk_live_YOUR_REAL_SECRET
+      LIVE_PAYMENT_ALLOWLIST=YOUR_OPTISAVE_LOGIN_EMAIL
+      LIVE_DEPOSIT_MAX=5000
+      LIVE_WITHDRAWAL_MAX=5000
+6. Never paste the live secret key into HTML/JS or share it in chat/source control.
+7. Restart with: npm start
+   Startup should log: Payments: PILOT mode (live Paystack key)
+8. Run: npm run test:pilot
+9. First real-money test: use a small deposit and withdrawal from the allowlisted account only.
+10. Do NOT set PAYMENT_MODE=live until the controlled pilot, webhook, ledger and reconciliation checks all pass.
+
+SAFETY BEHAVIOR
+- A live key with PAYMENT_MODE=test refuses to start.
+- PAYMENT_MODE=pilot with a test key refuses to start.
+- Pilot mode requires an allowlisted OptiSave login email.
+- Non-allowlisted users cannot initialize real deposits/withdrawals or create live Paystack/KYC resources.
+- Development wallet endpoints are disabled outside test mode.
+- Webhooks remain active so accepted Paystack transactions can settle safely.

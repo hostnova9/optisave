@@ -1,0 +1,134 @@
+OPTISAVE v1.73.0 — PRIVATE CLOUD DEMO PREVIEW
+Based on the complete v1.72 Team Access package. Not production-ready.
+
+ARCHITECTURE
+GitHub private repository -> Cloudflare Workers (Express API + isolated static
+assets) -> Neon PostgreSQL. Resend and Paystack TEST only. No Cloudflare Tunnel,
+local PostgreSQL or PGlite is needed for the cloud copy after deployment.
+The old local installation is NOT replaced or deleted. This ZIP contains code,
+not existing registrations, wallets, staff data, savings plans or database backups.
+Start with an empty dedicated Neon test database unless a separate migration has
+been planned and reconciled. Never point the cloud demo to real financial data.
+
+1. GITHUB — browser upload
+Extract in a NEW folder named OptiSave-Cloud. Open the extracted OptiSave folder.
+Create a PRIVATE GitHub repository named optisave (or optisave-cloud if taken).
+Upload the CONTENTS of the OptiSave folder at repository root, not the ZIP or
+an extra outer folder. wrangler.jsonc and package.json must be at the root.
+Upload server/, scripts/, css/, js/, images/, root HTML and project files.
+GitHub's browser uploader may skip hidden files: .gitignore is included; create
+it manually if necessary. Never upload .env, node_modules, .dev.vars, local
+PGlite/database paths, private backups, credentials or banking documents.
+The .env.example here is a blank template, not a secret. No dist/ upload needed.
+
+2. NEON — separate project
+Create a dedicated new Neon project, e.g. OptiSave-Test. Select PostgreSQL and
+an empty database. In Connect, choose an ordinary direct connection string
+(with TLS; turn off connection pooling in the connection-string dialog).
+The cloud adapter accepts only Neon database URLs and enforces verify-full TLS.
+Never paste credentials in chat, GitHub or build logs. Do not use ArikePreorder's DB.
+
+3. ONE-TIME DATABASE AND OWNER SETUP (from the new cloud folder on Windows)
+Before deploying, initialize the schema and a new owner. In CMD:
+  npm ci
+  copy .env.example .env
+Open the new .env privately with Notepad. Fill DATABASE_URL, ADMIN_EMAIL and
+ADMIN_PASSWORD (new unique strong password, at least 16 characters). Save only
+on your computer. Then run:
+  npm run db:init
+Expected: OptiSave database initialized, admin account initialized.
+If setup failed, do not continue. Do not share .env or passwords. This CLI uses
+Neon, not the local database. Do not run the initialization for an existing
+nonempty database without reviewing migrations and making a backup; the existing
+init-db script includes legacy repair/backfill operations. Avoid running twice
+unnecessarily because initialization can reset the configured admin password.
+For subsequent owner password changes, use admin:init on the cloud folder against
+the intended database only. Remove the private .env from the upload folder
+before any upload; keep secure offline copies as appropriate.
+
+4. CLOUDFLARE — Workers & Pages (not Pages-only hosting)
+Create application / import a Git repository. Pick your private optisave repo.
+Worker name: optisave (match wrangler.jsonc).
+Production branch: main. Root directory: / (repository root).
+Build command: npm run build
+Deploy command: npm run deploy
+Cloudflare Workers Paid is recommended because existing bcrypt cost-12 password
+hashing and financial batches may exceed the Free CPU limit. Check pricing and
+limits before enabling. No separate GitHub workflow or tunnel is necessary.
+Build may initially fail: send only redacted log, not credentials.
+Initially /__deployment is public and returns only service/test status; all
+other paths fail closed until runtime configuration and Access are set.
+
+5. CLOUDFLARE — Worker Settings > Variables and Secrets (RUNTIME, not Build)
+Add the following as Secrets; do not store in the repository:
+  DATABASE_URL            new Neon direct TLS connection string
+  JWT_SECRET              fresh random string >=32 characters
+  IDENTITY_FINGERPRINT_KEY fresh independent random secret (recommended)
+  RESEND_API_KEY          new Resend key for verified sender
+  PAYSTACK_SECRET_KEY     new sk_test_... only, optional until payment testing
+  APP_BASE_URL            https://demo.myoptisave.site (or exact enabled hostname)
+  CF_ACCESS_ISSUER        https://YOUR-TEAM.cloudflareaccess.com
+  CF_ACCESS_AUD           Application Audience (AUD) from the Access app
+  DEMO_ENABLED            true only after private Access configuration
+  SCHEDULER_ENABLED       true only after schema setup and scheduler testing
+Generate random secrets locally, e.g. node -e "console.log(require('crypto').randomBytes(48).toString('hex'))". Generate each independently. Rotate all previously exposed keys.
+Default configuration in wrangler.jsonc is production-mode error handling, TEST
+payments, no dev-wallet endpoints/code-print fallback, and disabled Fincra lab.
+Do not supply any live payment credentials or override those safe defaults.
+The sender addresses assume myoptisave.site is still verified in Resend.
+Cloudflare Access blocks unauthenticated visitors; protected email-image URLs may
+not render in mail clients. This does not prevent text OTP delivery.
+
+6. PROTECTED DEMO HOSTNAME
+Use a NEW hostname (suggested demo.myoptisave.site) to avoid breaking the existing
+local tunnel at test.myoptisave.site. Worker Settings > Domains & Routes > Add >
+Custom Domain, if the zone is in this Cloudflare account. Do not remove the old
+DNS route yet. Set up an Access self-hosted application for the new hostname
+(Zero Trust > Access > Applications). Include only your email and the specific
+approved Paga reviewers, with email OTP enabled as an identity method. Record
+the application AUD and team domain in the runtime secrets above. The Worker
+also checks the signed Access assertion, failing closed on other URLs. The
+workers.dev URL can be disabled after the custom hostname is verified.
+Set DEMO_ENABLED=true only after Access is set up. Verify the /api/health response
+as an authenticated visitor, and check incognito access is denied. The Paystack
+browser callback uses the APP_BASE_URL. Paystack server webhooks are deliberately
+not available publicly in this preview; the test callback verification should be
+exercised. Do not bypass Access globally. A narrowly scoped signature-checked
+webhook can be enabled in a later tested update if needed.
+
+7. REQUIRED TESTS BEFORE SHARING WITH PAGA
+  Registration and Resend OTP; login and password changes; owner/team access.
+  Paystack test payment callback; repeat callback to verify exactly-once credit.
+  Lock only, lock-and-allocation, daily savings, eligible emergency withdrawals,
+  maturity, weekend exclusion, and persistent balances after Worker redeploy.
+  Verify unauthorized dev wallet requests fail and private paths return 404/403.
+  Confirm actual Cloudflare Cron execution, 5 AM Lagos (04:00 UTC) eligibility,
+  correct catch-up, no duplicate ledger entries, and no overlapping run issues.
+  Monitor database connection limits and Worker CPU/time limits.
+  Company mailer and staff access. Bulk emailed broadcasts limited to 10 recipients
+  per send during cloud preview and awaited to avoid lost background jobs.
+  Ensure masks and access controls work. Use fictional data and simulated funds.
+The schedule triggers every minute, but runs only if SCHEDULER_ENABLED=true.
+The unchanged financial engine still determines eligibility; scheduling alone is
+not proof of correct financial operation. Disable the old scheduler if migrating
+or sharing the same records. Do not run both against the same financial data.
+
+8. BACKUPS AND MIGRATION
+The cloud data is separate from your computer. Keep secure encrypted backups of
+Neon (pg_dump/pg_restore with compatible tools or managed backup features); test
+restore periodically. If you want to preserve PGlite testing data, keep the local
+folder and its backups unchanged and do a separate verified export/import with
+row counts, balance/ledger reconciliation and sequence checks. The cloud ZIP is
+not a database migration tool. No real customer funds until all regulatory,
+security, reconciliation, recovery and financial tests are completed.
+
+VERIFICATION PERFORMED IN PREPARING THIS PREVIEW
+- Source ZIP integrity checked; existing financial-engine.js, schedule.js,
+  payments.js, ledger.js, schema.sql, idempotency.js unchanged.
+- npm run test:cloud and npm run test:pilot passed; JS syntax checks passed.
+- Public asset allowlist verified; no private database or .env in ZIP.
+- npm package registry not reachable in preparation environment: dependency
+  installation, Wrangler bundling, actual Cloudflare/Neon DB connection,
+  Express request adaptation, Access JWT verification in Workers, scheduler and
+  end-to-end flows have NOT been verified. Treat as deployment candidate, not
+  finished production release. Run npm run check:bundle with network access.

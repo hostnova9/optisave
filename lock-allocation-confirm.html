@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Review Lock & Allocation</title>
+
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/lock-allocation-confirm.css">
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- ==========================
+         HEADER
+    =========================== -->
+
+    <header class="page-header">
+
+        <button
+            class="back-btn"
+            onclick="goBackToAllocationPlan()">
+
+            ←
+
+        </button>
+
+        <div>
+
+            <h2>Review Plan</h2>
+
+            <p>
+
+                Confirm your Lock & Allocation plan before saving.
+
+            </p>
+
+        </div>
+
+    </header>
+
+    <!-- ==========================
+         PLAN INFORMATION
+    =========================== -->
+
+    <section class="card">
+
+        <h3>Plan Information</h3>
+
+        <div class="row">
+
+            <span>Plan Name</span>
+
+            <strong id="reviewPlanName"></strong>
+
+        </div>
+
+        <div class="row">
+
+            <span>Purpose</span>
+
+            <strong id="reviewPurpose"></strong>
+
+        </div>
+
+        <div class="row">
+
+            <span>Allocation Start</span>
+
+            <strong id="reviewStartDate"></strong>
+
+        </div>
+
+        <div class="row">
+
+            <span>Maturity Date</span>
+
+            <strong id="reviewMaturity"></strong>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================
+         LOCK DETAILS
+    =========================== -->
+
+    <section class="card">
+
+        <h3>Lock Details</h3>
+
+        <div class="row">
+
+            <span>Total Locked</span>
+
+            <strong id="reviewAmount"></strong>
+
+        </div>
+
+        <div class="row">
+
+            <span>Duration</span>
+
+            <strong id="reviewDuration"></strong>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================
+         ALLOCATION SUMMARY
+    =========================== -->
+
+    <section class="card">
+
+        <h3>Allocation Summary</h3>
+
+        <div class="row">
+
+            <span>Allocation Percentage</span>
+
+            <strong id="reviewPercent"></strong>
+
+        </div>
+
+        <div class="row">
+
+            <span>Allocation Amount</span>
+
+            <strong id="reviewAllocation"></strong>
+
+        </div>
+
+        <div class="row">
+
+            <span>Remaining Locked</span>
+
+            <strong id="reviewRemaining"></strong>
+
+        </div>
+
+        <div class="row">
+
+            <span>Weekend Schedule</span>
+
+            <strong id="reviewWeekend"></strong>
+
+        </div>
+
+        <div class="row">
+
+            <span>Release Frequency</span>
+
+            <strong id="reviewFrequency"></strong>
+
+        </div>
+
+        <div class="row">
+
+            <span>Scheduled Releases</span>
+
+            <strong id="reviewAllocationDays"></strong>
+
+        </div>
+
+        <div class="row">
+
+            <span>Amount Per Release</span>
+
+            <strong id="reviewDaily"></strong>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================
+         WALLET PREVIEW
+    =========================== -->
+
+    <section class="wallet-card">
+
+        <h3>Wallet Preview</h3>
+
+        <div class="row">
+
+            <span>Wallet Before</span>
+
+            <strong id="walletBefore"></strong>
+
+        </div>
+
+        <div class="row">
+
+            <span>Amount To Lock</span>
+
+            <strong id="walletLock"></strong>
+
+        </div>
+
+        <div class="row">
+
+            <span>Wallet After</span>
+
+            <strong id="walletAfter"></strong>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================
+         NOTICE
+    =========================== -->
+
+    <section class="notice-card">
+
+        <p>
+
+            Please review your information carefully.
+
+            Once this plan is confirmed, your wallet will be debited immediately and your Lock & Allocation plan will become active.
+
+        </p>
+
+    </section>
+
+    <!-- ==========================
+         BUTTON
+    =========================== -->
+
+    <button
+        id="confirmAllocationPlan"
+        class="confirm-btn">
+
+        Confirm & Create Plan
+
+    </button>
+
+</div>
+
+<script src="js/api.js"></script><script src="js/auth-guard.js"></script><script src="js/storage.js"></script>
+<script src="js/lock-allocation-confirm.js"></script>
+
+</body>
+
+</html>

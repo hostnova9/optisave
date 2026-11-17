@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Available Balance | OptiSave</title>
+
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/available-balance.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header class="page-header">
+
+        <button class="back-btn"
+        onclick="window.location.href='dashboard.html'">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+        </button>
+
+        <div>
+
+            <h2>Available Balance</h2>
+
+            <p>
+
+                Manage your wallet and transactions.
+
+            </p>
+
+        </div>
+
+    </header>
+
+    <!-- WALLET CARD -->
+
+    <section class="wallet-card">
+
+        <div class="wallet-top">
+
+            <div>
+
+                <span>
+
+                    Available Balance
+
+                </span>
+
+                <h1 id="walletBalance">
+
+                    ₦0
+
+                </h1>
+
+            </div>
+
+            <div class="wallet-icon">
+
+                <i class="fa-solid fa-wallet"></i>
+
+            </div>
+
+        </div>
+
+        <div class="wallet-growth">
+
+            <i class="fa-solid fa-arrow-trend-up"></i>
+
+            Wallet ready for deposits
+
+        </div>
+
+    </section>
+
+    <!-- QUICK ACTION -->
+
+    <section class="card">
+
+        <h3>
+
+            <i class="fa-solid fa-bolt"></i>
+
+            Quick Actions
+
+        </h3>
+
+        <div class="action-grid">
+
+            <button
+            class="action-card"
+            onclick="window.location.href='wallet-deposit.html'">
+
+                <i class="fa-solid fa-plus"></i>
+
+                <span>Add Money</span>
+
+            </button>
+
+            <button
+            class="action-card disabled">
+
+                <i class="fa-solid fa-money-bill-wave"></i>
+
+                <span>Withdraw</span>
+
+                <small>Coming Soon</small>
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- WALLET STATS -->
+
+    <section class="card">
+
+        <h3>
+
+            <i class="fa-solid fa-chart-pie"></i>
+
+            Wallet Statistics
+
+        </h3>
+
+        <div class="stats-grid">
+
+            <div class="stat-box">
+
+                <small>Total Deposited</small>
+
+                <h4 id="totalDeposited">
+
+                    ₦0
+
+                </h4>
+
+            </div>
+
+            <div class="stat-box">
+
+                <small>Total Locked</small>
+
+                <h4 id="totalLocked">
+
+                    ₦0
+
+                </h4>
+
+            </div>
+
+            <div class="stat-box">
+
+                <small>Available</small>
+
+                <h4 id="availableFunds">
+
+                    ₦0
+
+                </h4>
+
+            </div>
+
+            <div class="stat-box">
+
+                <small>Active Plans</small>
+
+                <h4 id="activePlans">
+
+                    0
+
+                </h4>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- RECENT TRANSACTIONS -->
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <h3>
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                Recent Transactions
+
+            </h3>
+
+            <button
+            class="view-all-btn">
+
+                View All
+
+            </button>
+
+        </div>
+
+        <div
+        id="transactionList"
+        class="transaction-list">
+
+            <div class="empty-state">
+
+                <i class="fa-solid fa-receipt"></i>
+
+                <h4>
+
+                    No Transactions Yet
+
+                </h4>
+
+                <p>
+
+                    Your deposits, withdrawals and savings activities will appear here.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script src="js/api.js"></script><script src="js/auth-guard.js"></script><script src="js/storage.js?v=1.27"></script>
+<script src="js/available-balance.js?v=1.27"></script>
+
+</body>
+
+</html>

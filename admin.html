@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OptiSave Admin</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/admin.css?v=1.72">
+</head>
+<body class="admin-body admin-routed">
+<aside class="admin-sidebar" id="adminSidebar">
+  <div class="admin-side-brand"><div class="admin-logo"><i class="fa-solid fa-lock"></i></div><div><b>Opti<span class="brand-save">Save</span></b><small>Admin Console</small></div></div>
+  <nav class="admin-nav-groups">
+    <div class="admin-nav-label">Workspace</div>
+    <a class="active" href="#overview"><i class="fa-solid fa-grid-2"></i><span>Overview</span></a>
+
+    <div class="admin-nav-label">Customers & Plans</div>
+    <a href="#users"><i class="fa-solid fa-users"></i><span>Users</span></a>
+    <a href="#kyc"><i class="fa-solid fa-id-card"></i><span>KYC Review</span></a>
+    <a href="#plans"><i class="fa-solid fa-piggy-bank"></i><span>Savings Plans</span></a>
+
+    <div class="admin-nav-label">Money Movement</div>
+    <a href="#transactions"><i class="fa-solid fa-receipt"></i><span>Transactions</span></a>
+    <a href="#deposits"><i class="fa-solid fa-arrow-down"></i><span>Deposits</span></a>
+    <a href="#withdrawals"><i class="fa-solid fa-arrow-up"></i><span>Withdrawals</span></a>
+
+    <div class="admin-nav-label">Integrations</div>
+    <a href="#bankLab"><i class="fa-solid fa-building-columns"></i><span>Fincra Sandbox</span></a>
+
+    <div class="admin-nav-label">Communications</div>
+    <a href="#broadcast"><i class="fa-solid fa-bullhorn"></i><span>User Broadcasts</span></a>
+    <a href="#companyMailer"><i class="fa-solid fa-envelope-open-text"></i><span>Company Mailer</span></a>
+    <a href="#notifications"><i class="fa-solid fa-bell"></i><span>Notifications</span></a>
+
+    <div class="admin-nav-label" id="navStaffLabel">Team & Support</div>
+    <a href="#customerDirectory"><i class="fa-solid fa-headset"></i><span>Customer Directory</span></a>
+    <a href="#teamAccess"><i class="fa-solid fa-user-shield"></i><span>Team Access</span></a>
+    <a href="#accountSettings"><i class="fa-solid fa-key"></i><span>My Password</span></a>
+
+    <div class="admin-nav-label">System</div>
+    <a href="#testing"><i class="fa-solid fa-flask"></i><span>Testing Tools</span></a>
+  </nav>
+  <div class="admin-side-footer">
+    <a href="dashboard.html"><i class="fa-solid fa-arrow-up-right-from-square"></i><span>User App</span></a>
+    <button id="adminLogout"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+  </div>
+</aside>
+
+<main class="admin-main">
+  <header class="admin-topbar">
+    <button class="admin-menu" id="adminMenu"><i class="fa-solid fa-bars"></i></button>
+    <div><h1>Admin Dashboard</h1><p>OptiSave development management console</p></div>
+    <div class="admin-badge"><span></span> Development</div>
+  </header>
+
+  <section id="overview" class="admin-section active-section">
+    <div class="section-heading"><div><h2>Overview</h2><p>Live authenticated data from PostgreSQL.</p></div><button class="secondary-admin-btn" id="refreshAdmin"><i class="fa-solid fa-rotate"></i> Refresh</button></div>
+    <div class="admin-stats">
+      <article><div class="stat-icon"><i class="fa-solid fa-wallet"></i></div><span>Available Balance</span><strong id="adminAvailable">₦0</strong></article>
+      <article><div class="stat-icon"><i class="fa-solid fa-lock"></i></div><span>Active Plans</span><strong id="adminActivePlans">0</strong></article>
+      <article><div class="stat-icon"><i class="fa-solid fa-receipt"></i></div><span>Transactions</span><strong id="adminTxnCount">0</strong></article>
+      <article><div class="stat-icon"><i class="fa-solid fa-bell"></i></div><span>Unread Alerts</span><strong id="adminUnread">0</strong></article>
+    </div>
+    <div class="admin-grid">
+      <article class="admin-panel">
+        <div class="panel-head"><h3>Plan Breakdown</h3></div>
+        <div id="planBreakdown" class="breakdown"></div>
+      </article>
+      <article class="admin-panel">
+        <div class="panel-head"><h3>Recent Activity</h3></div>
+        <div id="recentActivity" class="activity-list"></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="users" class="admin-section">
+    <div class="section-heading"><div><h2>Users</h2><p>Current authenticated development account from PostgreSQL.</p></div></div>
+    <div class="admin-panel"><div id="adminUsers" class="table-wrap"></div></div>
+  </section>
+
+  <section id="kyc" class="admin-section"><div class="section-heading"><div><h2>KYC Review</h2><p>Compare profile identity with the bank account name resolved by Paystack before approval.</p></div></div><div class="admin-panel"><div id="adminKyc" class="table-wrap"></div></div></section>
+<section id="plans" class="admin-section">
+    <div class="section-heading"><div><h2>Savings Plans</h2><p>Inspect Lock Only, Lock & Allocation and Daily Savings plans.</p></div></div>
+    <div class="admin-panel"><div id="adminPlans" class="table-wrap"></div></div>
+  </section>
+
+  <section id="transactions" class="admin-section">
+    <div class="section-heading"><div><h2>Transactions</h2><p>Money movements recorded by the current test account.</p></div></div>
+    <div class="admin-panel"><div id="adminTransactions" class="table-wrap"></div></div>
+  </section>
+
+  <section id="deposits" class="admin-section">
+    <div class="section-heading"><div><h2>Deposits</h2><p>Deposit records from transaction history.</p></div></div>
+    <div class="admin-panel"><div id="adminDeposits" class="table-wrap"></div></div>
+  </section>
+
+  <section id="withdrawals" class="admin-section">
+    <div class="section-heading"><div><h2>Withdrawals</h2><p>Withdrawal records from transaction history.</p></div></div>
+    <div class="admin-panel"><div id="adminWithdrawals" class="table-wrap"></div></div>
+  </section>
+
+
+  <section id="bankLab" class="admin-section">
+    <div class="section-heading"><div><h2>Fincra Sandbox</h2><p>One isolated test workspace for Fincra pay-ins, virtual accounts, beneficiary checks, webhooks and local payouts.</p></div><a class="secondary-admin-btn bank-doc-link" href="https://docs.fincra.com/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Fincra Docs</a></div>
+
+    <div class="bank-lab-hero fincra-hero">
+      <div><span class="bank-lab-kicker">FINCRA · SANDBOX PAYMENTS INFRASTRUCTURE</span><h3>Fincra Sandbox Integration</h3><p>Test Fincra safely in one dedicated workspace. The lab is hard-locked to Fincra Test Mode and never credits or debits OptiSave customer balances.</p></div>
+      <div class="bank-lab-badges"><span id="fincraEnvironmentBadge">SANDBOX</span><span id="fincraConfiguredBadge" class="warn">Checking…</span></div>
+    </div>
+
+    <div id="fincraLabStatus" class="bank-lab-message" hidden></div>
+
+    <div class="bank-lab-status-grid">
+      <article><small>API Base URL</small><strong id="fincraBaseStatus">Checking…</strong><span id="fincraBaseUrl">—</span></article>
+      <article><small>Secret API Key</small><strong id="fincraSecretStatus">Checking…</strong><span>Header: api-key</span></article>
+      <article><small>Public API Key</small><strong id="fincraPublicStatus">Checking…</strong><span>Header: x-pub-key</span></article>
+      <article><small>Webhook Key</small><strong id="fincraWebhookKeyStatus">Checking…</strong><span>HMAC-SHA512 validation</span></article>
+      <article><small>Business ID</small><strong id="fincraBusinessStatus">Checking…</strong><span id="fincraBusinessId">—</span></article>
+    </div>
+
+    <div class="admin-grid bank-lab-grid">
+      <article class="admin-panel">
+        <div class="panel-head bank-lab-panel-head"><div><h3>Fincra Readiness</h3><small>Green checks reflect successful sandbox calls in the last 30 days.</small></div><button id="refreshFincraLab" class="secondary-admin-btn"><i class="fa-solid fa-rotate"></i> Refresh</button></div>
+        <div id="fincraReadiness" class="provider-readiness"></div>
+      </article>
+      <article class="admin-panel">
+        <div class="panel-head"><h3>Fincra Test Webhook</h3></div>
+        <p class="bank-lab-help">After onboarding approval, switch the Fincra dashboard to Test Mode and save this URL under API Keys & Webhook Configuration.</p>
+        <div class="callback-list"><label>Webhook URL<div><code id="fincraWebhookUrl">Set APP_BASE_URL first</code><button class="copy-bank-value" data-copy="fincraWebhookUrl">Copy</button></div></label></div>
+      </article>
+    </div>
+
+    <div class="bank-lab-tool-grid">
+      <article class="admin-panel bank-tool-card">
+        <div class="panel-head"><h3>1. Connection & Business Profile</h3><span class="status-pill">READ ONLY</span></div>
+        <p>Authenticates with your sandbox Secret Key and reads the Fincra business profile. If a Business ID is returned, OptiSave detects it automatically for this server session.</p>
+        <button id="fincraConnectionTest" class="primary-admin-btn compact"><i class="fa-solid fa-plug-circle-check"></i> Test Sandbox Connection</button>
+      </article>
+
+      <article class="admin-panel bank-tool-card">
+        <div class="panel-head"><h3>2. Nigerian Banks</h3><span class="status-pill">READ ONLY</span></div>
+        <p>Loads Fincra's sandbox list of NGN destination banks so we can confirm bank codes before account verification and payouts.</p>
+        <button id="fincraListBanks" class="secondary-admin-btn"><i class="fa-solid fa-building-columns"></i> List NGN Banks</button>
+      </article>
+
+      <article class="admin-panel bank-tool-card">
+        <div class="panel-head"><h3>3. Temporary NGN Virtual Account</h3><span class="status-pill">SANDBOX</span></div>
+        <p>Uses Fincra's documented Pay-with-Transfer sandbox endpoint to create a temporary NGN collection account.</p>
+        <div class="bank-inline-fields"><label>Amount (₦)<input id="fincraTempAmount" type="number" min="1" value="900"></label><label>Expiry (minutes)<input id="fincraTempExpiry" type="number" min="1" max="1440" value="30"></label></div>
+        <label>Merchant Reference<input id="fincraTempReference" value="OPTISAVE-FINCRA-TEST-001"></label>
+        <button id="fincraTempAccount" class="primary-admin-btn compact">Create Temporary VA</button>
+      </article>
+
+      <article class="admin-panel bank-tool-card bank-tool-wide">
+        <div class="panel-head"><h3>4. Permanent Virtual Account Request</h3><span class="status-pill warning-pill">KYC PAYLOAD</span></div>
+        <p>Calls <code>/profile/virtual-accounts/requests</code>. Paste only sandbox/test customer data that matches Fincra's current documentation. Never put real customer KYC into this developer lab unless Fincra explicitly requires it for your approved test account.</p>
+        <label>Request JSON<textarea id="fincraPermanentJson" rows="9" spellcheck="false" placeholder='{"currency":"NGN","accountType":"individual","KYCInformation":{}}'></textarea></label>
+        <button id="fincraPermanentAccount" class="primary-admin-btn compact">Request Permanent VA</button>
+      </article>
+
+      <article class="admin-panel bank-tool-card">
+        <div class="panel-head"><h3>5. Verify Nigerian Bank Account</h3><span class="status-pill">READ ONLY</span></div>
+        <p>Resolve the beneficiary name before a payout using Fincra's account verification endpoint.</p>
+        <div class="bank-inline-fields"><label>Bank Code<input id="fincraBankCode" placeholder="e.g. 044"></label><label>10-digit Account Number<input id="fincraAccountNumber" inputmode="numeric" maxlength="10"></label></div>
+        <button id="fincraResolveAccount" class="secondary-admin-btn">Verify Account</button>
+      </article>
+
+      <article class="admin-panel bank-tool-card">
+        <div class="panel-head"><h3>6. Local NGN Payout</h3><span class="status-pill warning-pill">SANDBOX WRITE</span></div>
+        <p>This lab only permits NGN → NGN bank-account payouts and applies a server-side sandbox amount cap.</p>
+        <label>Payout JSON<textarea id="fincraPayoutJson" rows="11" spellcheck="false" placeholder='{"sourceCurrency":"NGN","destinationCurrency":"NGN","amount":500,"paymentDestination":"bank_account","customerReference":"OPTISAVE-FINCRA-PAYOUT-001","description":"OptiSave sandbox withdrawal test","beneficiary":{"firstName":"Test","lastName":"User","accountHolderName":"Test User","accountNumber":"0000000000","bankCode":"044","type":"individual"}}'></textarea></label>
+        <button id="fincraPayout" class="primary-admin-btn compact">Send Sandbox Payout</button>
+      </article>
+    </div>
+
+    <div class="admin-grid bank-lab-grid">
+      <article class="admin-panel"><div class="panel-head"><h3>Latest Fincra Response</h3><button id="clearFincraConsole" class="secondary-admin-btn">Clear</button></div><pre id="fincraResponseConsole" class="bank-response-console">Run a Fincra sandbox test to see the response here.</pre></article>
+      <article class="admin-panel"><div class="panel-head"><h3>Fincra Production Handoff Summary</h3><button id="copyFincraSummary" class="secondary-admin-btn"><i class="fa-regular fa-copy"></i> Copy Summary</button></div><p class="bank-lab-help">Use this after successful sandbox tests when asking Fincra for live enablement, limits, safeguarding/settlement structure and compliance conditions.</p><textarea id="fincraHandoffSummary" class="handoff-summary" rows="11" readonly></textarea></article>
+    </div>
+
+    <div class="admin-panel bank-log-panel"><div class="panel-head"><h3>Fincra Sandbox Test Log</h3><button id="refreshFincraLogs" class="secondary-admin-btn"><i class="fa-solid fa-rotate"></i> Refresh</button></div><div id="fincraSandboxLogs" class="table-wrap"></div></div>
+  </section>
+
+
+  <section id="broadcast" class="admin-section">
+    <div class="section-heading"><div><h2>Communications</h2><p>Send branded OptiSave messages to all users or a targeted user group.</p></div></div>
+    <div class="broadcast-layout">
+      <article class="admin-panel broadcast-composer">
+        <div class="panel-head"><h3>New Broadcast</h3><span class="status-pill">Branded</span></div>
+        <div class="broadcast-form-grid">
+          <label>Audience<select id="broadcastAudience">
+            <option value="all">All active users</option>
+            <option value="registered_no_plan">Registered but no plan</option>
+            <option value="lock_only">Lock Only users</option>
+            <option value="allocation">Lock & Allocation users</option>
+            <option value="daily">Daily Savings users</option>
+            <option value="active_plan">Any active plan</option>
+            <option value="matured_plan">Matured plan users</option>
+            <option value="inactive_30d">Inactive for 30+ days</option>
+            <option value="selected">Selected users</option>
+          </select></label>
+          <label>Message type<select id="broadcastType">
+            <option value="info">Update</option><option value="important">Important</option><option value="reminder">Reminder</option><option value="promo">Promo</option><option value="security">Security</option><option value="system">System</option>
+          </select></label>
+        </div>
+        <div id="selectedUsersPanel" class="selected-users-panel" hidden>
+          <div class="selected-users-head"><b>Select users</b><span id="selectedUsersCount">0 selected</span></div>
+          <input id="broadcastUserSearch" type="search" placeholder="Search name, email or phone">
+          <div id="broadcastUserResults" class="broadcast-user-results"></div>
+        </div>
+        <label>Title<input id="broadcastTitle" maxlength="180" placeholder="e.g. Ready to start saving?"></label>
+        <label>Subtitle <small>Optional</small><input id="broadcastSubtitle" maxlength="220" placeholder="A short supporting line"></label>
+        <label>Message<textarea id="broadcastMessage" maxlength="3000" rows="6" placeholder="Write the message users should receive..."></textarea></label>
+        <div class="broadcast-form-grid">
+          <label>Action button <small>Optional</small><input id="broadcastActionLabel" maxlength="80" placeholder="Create a Plan"></label>
+          <label>Action page <small>Optional</small><select id="broadcastActionUrl"><option value="">No button</option><option value="dashboard.html">Dashboard</option><option value="create-plan.html">Create a Plan</option><option value="wallet-deposit.html">Fund Wallet</option><option value="daily-saving.html">Daily Savings</option><option value="active-locked-plans.html">View Plans</option><option value="help-support.html">Help & Support</option></select></label>
+        </div>
+        <div class="broadcast-channels">
+          <label class="channel-card active"><input type="checkbox" checked disabled><span><b>In-app notification</b><small>Logo, banner, unread badge and history</small></span></label>
+          <label class="channel-card" id="emailChannelCard"><input type="checkbox" id="broadcastEmail"><span><b>Email</b><small id="emailChannelNote">Checking email setup...</small></span></label>
+        </div>
+        <div class="broadcast-send-row"><div><span>Estimated recipients</span><strong id="broadcastRecipientCount">—</strong></div><button id="previewBroadcast" class="secondary-admin-btn"><i class="fa-solid fa-eye"></i> Preview</button><button id="openBroadcastConfirm" class="primary-admin-btn compact"><i class="fa-solid fa-paper-plane"></i> Review & Send</button></div>
+      </article>
+
+      <article class="admin-panel">
+        <div class="panel-head"><h3>OptiSave Preview</h3></div>
+        <div class="broadcast-preview-card" id="broadcastPreviewCard">
+          <div class="broadcast-preview-banner"><img src="images/optisave-broadcast-logo.png" alt="OptiSave"><div><strong>OptiSave</strong><span>Save Better. Live Better.</span></div><em id="previewType">UPDATE</em></div>
+          <div class="broadcast-preview-body"><h4 id="previewTitle">Your message title</h4><h5 id="previewSubtitle"></h5><p id="previewMessage">Your branded message preview will appear here.</p><button id="previewAction" hidden>Create a Plan</button></div>
+          <div class="broadcast-preview-footer">OptiSave Digital Solutions Ltd · RC 9899018</div>
+        </div>
+      </article>
+    </div>
+    <div class="admin-panel broadcast-history-panel"><div class="panel-head"><h3>Broadcast History</h3><button id="refreshBroadcastHistory" class="secondary-admin-btn"><i class="fa-solid fa-rotate"></i> Refresh</button></div><div id="broadcastHistory" class="table-wrap"></div></div>
+  </section>
+
+
+  <section id="companyMailer" class="admin-section">
+    <div class="section-heading"><div><h2>Company Mailer</h2><p>Send official branded OptiSave correspondence to banks, partners, investors and other external contacts.</p></div><span id="mailerProviderBadge" class="status-pill">Checking email…</span></div>
+    <div id="mailerStatus" class="mailer-status" hidden></div>
+    <div class="mailer-layout">
+      <article class="admin-panel mailer-composer">
+        <div class="panel-head"><h3>Compose Official Email</h3><span class="status-pill">OptiSave Branded</span></div>
+        <div class="mailer-form-grid">
+          <label>Template<select id="mailerTemplate">
+            <option value="custom">Custom message</option>
+            <option value="bank_follow_up">Bank follow-up / regulatory clarification</option>
+            <option value="keystone_value_follow_up">Keystone follow-up / strategic value & benefits</option>
+            <option value="bank_intro">Banking partnership introduction</option>
+            <option value="investor_intro">Investor introduction</option>
+            <option value="general_business">General business correspondence</option>
+            <option value="support">Customer / partner support</option>
+          </select></label>
+          <label>Email layout<select id="mailerLayout"><option value="formal">Formal corporate letter</option><option value="partnership">Partnership / banking</option><option value="investor">Investor / business</option><option value="support">Support</option><option value="general">General OptiSave</option></select></label>
+        </div>
+        <label>To <small>Separate multiple addresses with commas</small><textarea id="mailerTo" rows="2" placeholder="e.g. contactcentre@bank.com"></textarea></label>
+        <div class="mailer-form-grid">
+          <label>CC <small>Optional</small><input id="mailerCc" placeholder="name@example.com"></label>
+          <label>BCC <small>Optional</small><input id="mailerBcc" placeholder="name@example.com"></label>
+        </div>
+        <label>Greeting<input id="mailerGreeting" maxlength="220" value="Dear Sir/Madam," placeholder="Dear Josephine and Team,"></label>
+        <label>Subject<input id="mailerSubject" maxlength="220" placeholder="Banking Partnership & Customer Funds Infrastructure Request"></label>
+        <label>Header / Letter Title<input id="mailerTitle" maxlength="220" placeholder="Banking Partnership Follow-Up"></label>
+        <label>Message<textarea id="mailerBody" maxlength="20000" rows="15" placeholder="Write the official email message here..."></textarea></label>
+        <div class="mailer-form-grid">
+          <label>Action button <small>Optional</small><input id="mailerCtaLabel" maxlength="100" placeholder="Visit OptiSave"></label>
+          <label>Button link <small>Optional</small><input id="mailerCtaUrl" maxlength="800" placeholder="https://myoptisave.site"></label>
+        </div>
+        <label class="mailer-attachment-label">Attachments <small>PDF, DOC/DOCX, PNG/JPG or TXT · up to 5 files / 7 MB total</small><input id="mailerAttachments" type="file" multiple accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.txt"><span id="mailerAttachmentSummary">No files selected</span></label>
+        <div class="mailer-send-row"><button id="previewCompanyMail" class="secondary-admin-btn"><i class="fa-solid fa-eye"></i> Preview</button><button id="openMailerTest" class="secondary-admin-btn"><i class="fa-solid fa-flask"></i> Send Test</button><button id="openMailerConfirm" class="primary-admin-btn compact"><i class="fa-solid fa-paper-plane"></i> Review & Send</button></div>
+      </article>
+
+      <article class="admin-panel mailer-preview-panel">
+        <div class="panel-head"><h3>Email Preview</h3><span id="mailerPreviewLayout" class="status-pill">FORMAL</span></div>
+        <div class="company-mail-preview" id="companyMailPreview">
+          <div class="company-mail-header"><img id="mailerPreviewLogo" src="images/optisave-broadcast-logo.png" alt="OptiSave"><div><strong>OptiSave</strong><span id="mailerPreviewTagline">Save Better. Live Better.</span></div><em id="mailerPreviewLabel">OFFICIAL</em></div>
+          <div class="company-mail-body"><small id="mailerPreviewCompany">OptiSave Digital Solutions Ltd</small><h4 id="mailerPreviewTitle">Your official email title</h4><p class="mail-greeting" id="mailerPreviewGreeting">Dear Sir/Madam,</p><p id="mailerPreviewBody">The branded email preview will appear here.</p><a id="mailerPreviewCta" hidden>Visit OptiSave</a><div class="mailer-signature"><b id="mailerPreviewSender">Adesokan Samson</b><span id="mailerPreviewSenderTitle">Director</span><span id="mailerPreviewSignatureCompany">OptiSave Digital Solutions Ltd</span></div></div>
+          <div class="company-mail-footer"><b id="mailerPreviewFooterCompany">OptiSave Digital Solutions Ltd</b> · RC <span id="mailerPreviewRc">9899018</span><br><span id="mailerPreviewWebsite">myoptisave.site</span> · <span id="mailerPreviewSupport">support@myoptisave.site</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="admin-grid mailer-lower-grid">
+      <article class="admin-panel">
+        <div class="panel-head"><h3>Bank / Partner Contacts</h3><span class="status-pill">Outreach Tracker</span></div>
+        <div class="contact-form-grid">
+          <input id="contactCompany" placeholder="Bank / company name">
+          <input id="contactName" placeholder="Contact person (optional)">
+          <input id="contactEmail" type="email" placeholder="Official email address">
+          <select id="contactStatus"><option value="new">Not contacted</option><option value="contacted">Email sent</option><option value="replied">Replied</option><option value="meeting">Meeting scheduled</option><option value="follow_up">Follow-up</option><option value="closed">Closed</option></select>
+          <input id="contactFollowUp" type="datetime-local" title="Next follow-up">
+          <button id="saveCompanyContact" class="primary-admin-btn compact"><i class="fa-solid fa-plus"></i> Save Contact</button>
+        </div>
+        <textarea id="contactNotes" class="contact-notes" rows="2" placeholder="Notes / what the bank requested (optional)"></textarea>
+        <div id="companyContacts" class="table-wrap mailer-table-wrap"></div>
+      </article>
+
+      <article class="admin-panel brand-settings-panel">
+        <div class="panel-head"><h3>Brand & Signature</h3><button id="saveMailerBrand" class="secondary-admin-btn"><i class="fa-solid fa-floppy-disk"></i> Save</button></div>
+        <div class="brand-form-grid">
+          <label>Company<input id="brandCompany"></label><label>RC number<input id="brandRc"></label><label>Support email<input id="brandSupport" type="email"></label><label>Website<input id="brandWebsite"></label><label>Tagline<input id="brandTagline"></label><label>Logo URL / path<input id="brandLogo"></label><label>Sender name<input id="brandSender"></label><label>Sender title<input id="brandSenderTitle"></label><label>Primary<input id="brandPrimary" type="color"></label><label>Accent<input id="brandAccent" type="color"></label>
+        </div>
+      </article>
+    </div>
+
+    <div class="admin-panel mailer-history-panel"><div class="panel-head"><h3>Sent Company Mail</h3><button id="refreshMailerHistory" class="secondary-admin-btn"><i class="fa-solid fa-rotate"></i> Refresh</button></div><div id="companyMailerHistory" class="table-wrap"></div></div>
+  </section>
+
+  <section id="notifications" class="admin-section">
+    <div class="section-heading"><div><h2>Notifications</h2><p>Alerts generated by savings and wallet activity.</p></div></div>
+    <div class="admin-panel"><div id="adminNotifications" class="table-wrap"></div></div>
+  </section>
+
+  <section id="testing" class="admin-section">
+    <div class="section-heading"><div><h2>Testing Tools</h2><p>Temporary development utilities. This section must be removed before production.</p></div></div>
+    <div class="danger-zone">
+      <div>
+        <div class="danger-label">DEVELOPMENT ONLY</div>
+        <h3>Reset Test Data</h3>
+        <p>Clears the selected user's development wallet balance, plans, transactions and notifications from PostgreSQL. It does not delete the user login or project files.</p>
+      </div>
+      <button class="danger-btn" id="openReset"><i class="fa-solid fa-trash-can"></i> Reset Test Data</button>
+    </div>
+  </section>
+
+  <section id="customerDirectory" class="admin-section" hidden>
+    <div class="section-heading"><div><h2>Customer Directory</h2><p>Basic registered-customer contact details only. Financial and KYC details are restricted.</p></div></div>
+    <div class="admin-panel"><label for="supportCustomerSearch">Find a customer (name or email)</label>
+       <input id="supportCustomerSearch" type="search" placeholder="Search customers" style="display:block;width:100%;max-width:440px;padding:11px;border:1px solid #d4e1ed;border-radius:10px;margin:8px 0 16px">
+       <div id="supportCustomers" class="table-wrap"></div>
+    </div>
+  </section>
+  <section id="teamAccess" class="admin-section" hidden>
+    <div class="section-heading"><div><h2>Team Access</h2><p>Only the owner can create, suspend, and reset staff accounts. Staff have limited access to OptiSave.</p></div></div>
+    <div class="admin-panel">
+       <h3>Create a Sub-Administrator</h3>
+       <form id="createStaffForm" class="admin-team-form" autocomplete="off">
+         <label>Full name<input name="fullName" required maxlength="180" placeholder="Employee full name"></label>
+         <label>Work email<input name="email" type="email" required placeholder="employee@example.com"></label>
+         <label>Role<select name="role"><option value="support_agent">Customer Care</option><option value="personal_assistant">Personal Assistant (Mail)</option></select></label>
+         <button type="submit">Generate Staff Account</button>
+       </form>
+       <div id="teamFeedback" class="admin-status" role="status" hidden></div>
+       <p class="muted">Temporary credentials are displayed once. Ask the employee to change their password at first login. Do not share credentials in public chats.</p>
+    </div>
+    <div class="admin-panel" style="margin-top:15px"><div class="panel-head"><h3>Sub-Administrators</h3><button id="refreshStaff" class="secondary-admin-btn">Refresh</button></div><div id="staffTable" class="table-wrap"></div></div>
+  </section>
+  <section id="accountSettings" class="admin-section" hidden>
+    <div class="section-heading"><div><h2>My Password</h2><p>Each staff member has a separate login. Changing your password immediately ends other sessions.</p></div></div>
+    <div class="admin-panel"><form id="changeAdminPassword" class="admin-password-form" autocomplete="off">
+        <label>Current password<input required type="password" name="currentPassword" autocomplete="current-password"></label>
+        <label>New password (minimum 12 characters)<input required type="password" name="newPassword" minlength="12" autocomplete="new-password"></label>
+        <label>Repeat new password<input required type="password" name="confirmPassword" minlength="12" autocomplete="new-password"></label>
+        <button class="primary-admin-btn" type="submit">Update Password</button>
+      </form><div id="passwordFeedback" class="admin-status" role="status" hidden></div>
+    </div>
+  </section>
+</main>
+
+
+<div class="admin-modal" id="broadcastConfirmModal" hidden>
+ <div class="admin-modal-card broadcast-confirm-card">
+  <div class="broadcast-confirm-brand"><img src="images/optisave-broadcast-logo.png" alt="OptiSave"><div><b>OptiSave Broadcast</b><small>Final confirmation</small></div></div>
+  <h3>Send this message?</h3>
+  <p id="broadcastConfirmSummary">Review the audience and message before sending.</p>
+  <div class="confirm-message-box"><b id="confirmBroadcastTitle"></b><span id="confirmBroadcastMessage"></span></div>
+  <div class="modal-actions"><button id="cancelBroadcast" class="secondary-admin-btn">Cancel</button><button id="confirmBroadcast" class="primary-admin-btn compact">Send Broadcast</button></div>
+ </div>
+</div>
+
+
+<div class="admin-modal" id="mailerConfirmModal" hidden>
+ <div class="admin-modal-card mailer-confirm-card">
+  <div class="broadcast-confirm-brand"><img src="images/optisave-broadcast-logo.png" alt="OptiSave"><div><b>OptiSave Company Mailer</b><small>Official external email</small></div></div>
+  <h3>Send this email?</h3><p id="mailerConfirmSummary">Review the recipient and subject before sending.</p>
+  <div class="confirm-message-box"><b id="mailerConfirmSubject"></b><span id="mailerConfirmRecipients"></span></div>
+  <div id="mailerConfirmProgress" class="mailer-modal-feedback" hidden></div>
+  <div id="mailerConfirmError" class="mailer-modal-feedback mailer-modal-error" hidden></div>
+  <div class="modal-actions"><button id="cancelCompanyMail" class="secondary-admin-btn">Cancel</button><button id="confirmCompanyMail" class="primary-admin-btn compact">Send Official Email</button></div>
+ </div>
+</div>
+
+<div class="admin-modal" id="mailerTestModal" hidden>
+ <div class="admin-modal-card mailer-confirm-card">
+  <div class="broadcast-confirm-brand"><img src="images/optisave-broadcast-logo.png" alt="OptiSave"><div><b>Send Test Email</b><small>Check the layout before sending externally</small></div></div>
+  <h3>Where should the test go?</h3><p>The test uses the same logo, banner, signature and attachments.</p>
+  <input id="mailerTestEmail" type="email" value="support@myoptisave.site" placeholder="support@myoptisave.site">
+  <div class="modal-actions"><button id="cancelMailerTest" class="secondary-admin-btn">Cancel</button><button id="confirmMailerTest" class="primary-admin-btn compact">Send Test</button></div>
+ </div>
+</div>
+
+<div class="admin-modal" id="resetModal" hidden>
+ <div class="admin-modal-card">
+  <div class="warning-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+  <h3>Reset all test data?</h3>
+  <p>This is for development only. Type <strong>RESET</strong> to confirm.</p>
+  <input id="resetConfirmText" autocomplete="off" placeholder="Type RESET">
+  <div class="modal-actions"><button id="cancelReset" class="secondary-admin-btn">Cancel</button><button id="confirmReset" class="danger-btn" disabled>Reset Test Data</button></div>
+ </div>
+</div>
+
+<script src="js/admin-api.js?v=1.72"></script>
+<script src="js/admin-access.js?v=1.72"></script>
+<script src="js/admin-navigation.js?v=1.72"></script>
+<script src="js/admin.js?v=1.72"></script>
+<script src="js/admin-mailer.js?v=1.72"></script>
+<script src="js/admin-fincra.js?v=1.72"></script>
+</body>
+</html>

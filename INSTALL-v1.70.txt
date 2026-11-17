@@ -1,0 +1,31 @@
+OptiSave v1.70 — Focused Admin Workspace + Fincra Sandbox
+
+1. Keep your existing .env file. Do not upload or share it.
+2. Replace your OptiSave project files with this v1.70 build.
+3. In .env, keep/add:
+
+FINCRA_SANDBOX_ENABLED=true
+FINCRA_SANDBOX_BASE_URL=https://sandboxapi.fincra.com
+FINCRA_SANDBOX_SECRET_KEY=YOUR_TEST_SECRET_KEY
+FINCRA_SANDBOX_PUBLIC_KEY=YOUR_TEST_PUBLIC_KEY
+FINCRA_SANDBOX_WEBHOOK_KEY=YOUR_TEST_WEBHOOK_KEY
+FINCRA_SANDBOX_BUSINESS_ID=
+APP_BASE_URL=https://myoptisave.site
+
+FINCRA_SANDBOX_BUSINESS_ID is optional in v1.70. The Connection & Business Profile test attempts to detect it automatically.
+
+4. Run:
+   npm install
+   npm start
+
+5. Admin now opens one workspace at a time. Use the left sidebar to move between Overview, Users, KYC, Savings Plans, Transactions, Deposits, Withdrawals, Fincra Sandbox, User Broadcasts, Company Mailer, Notifications, and Testing Tools.
+
+6. Open Admin -> Fincra Sandbox and test in this order:
+   - Connection & Business Profile
+   - Nigerian Banks
+   - Temporary NGN Virtual Account
+   - Verify Nigerian Bank Account
+   - Webhook delivery
+   - Local NGN Payout
+
+Wema runtime integration has been removed from this build. If Wema later supplies its requirements/credentials, add it back as a separate provider workspace.

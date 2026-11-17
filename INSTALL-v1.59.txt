@@ -1,0 +1,38 @@
+OPTISAVE v1.59 INSTALL / UPDATE
+
+1. Back up your current OptiSave folder and PostgreSQL database.
+2. Replace the project files with this v1.59 folder.
+3. Keep your existing real .env file. Do NOT overwrite it with .env.example.
+4. Add the Company Mailer settings to your real .env:
+
+   RESEND_API_KEY=YOUR_RESEND_API_KEY
+   AUTH_EMAIL_FROM=OptiSave <support@myoptisave.site>
+   COMPANY_EMAIL_FROM=OptiSave <support@myoptisave.site>
+   APP_BASE_URL=https://myoptisave.site
+
+5. Make sure myoptisave.site is verified in the email provider so support@myoptisave.site is an approved sender.
+6. Run: npm install
+7. Run: npm start
+
+The server automatically creates the v1.59 mailer, brand and partner-contact tables.
+
+ADMIN USE
+- Login to admin.html
+- Open Company Mailer
+- Choose Bank Follow-Up / Regulatory Clarification for the Keystone follow-up
+- Add the Keystone recipient email
+- Change the greeting to the contact person's name if known
+- Attach the partnership PDF/CAC document if needed
+- Click Send Test first
+- Check the received email
+- Then Review & Send
+
+IMPORTANT
+- PAYMENT_MODE remains unchanged. Keep it in test until you intentionally move to pilot.
+- Do not put RESEND_API_KEY or Paystack secret keys in browser/frontend files.
+- For different banks, send separate emails rather than placing unrelated banks together in To/CC.
+
+
+v1.60 verification-email hotfix:
+- Auth OTP emails now also fall back to COMPANY_EMAIL_FROM/BROADCAST_EMAIL_FROM.
+- This prevents registration/login verification from failing when the Company Mailer is configured but AUTH_EMAIL_FROM was omitted.

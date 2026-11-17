@@ -1,0 +1,15 @@
+OPTISAVE v1.66 - WEMA SANDBOX INTEGRATION LAB
+
+1. Keep your existing .env file. The downloadable ZIP intentionally does not contain .env.
+2. Replace the project files with v1.66.
+3. Run:
+   npm install
+   npm start
+4. The startup migration creates the new Wema sandbox log/auth tables automatically.
+5. Register/sign in at Wema ALAT Developer Playground and subscribe to the APIs you want to test.
+6. Add the WEMA_* sandbox values to your local .env / Render Environment.
+7. Restart/redeploy OptiSave.
+8. Login to Admin -> Bank Integration Lab.
+9. Start with "Get Bank List". Then test wallet creation, wallet lookup and callbacks.
+
+NOTE: Wema sandbox tests never credit/debit real OptiSave user balances.

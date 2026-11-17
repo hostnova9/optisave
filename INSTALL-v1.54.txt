@@ -1,0 +1,12 @@
+OptiSave v1.54 installation
+
+1. Stop the currently running OptiSave server (Ctrl+C).
+2. Keep a backup of your current working OptiSave folder.
+3. Preserve your current .env file. This package intentionally does NOT include .env secrets.
+4. Extract this package and copy your existing .env into the new OptiSave folder.
+5. Run: npm start
+   - v1.54 applies its idempotent database safety migration automatically before the server opens.
+6. Optional code/schedule self-test: npm run test:readiness
+7. While logged in, open /api/financial-audit and confirm transactionsMissingLedger is 0 and needsReconciliation is 0 before real-money launch.
+
+Do not enable a live payment gateway until the test flows in PRODUCTION-READINESS-v1.54.md have been completed.

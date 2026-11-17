@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lock Only | OptiSave</title>
+
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/lock-plan.css?v=1.56">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="lock-page savings-form-shell">
+
+    <!-- HEADER -->
+
+    <header class="page-header">
+
+        <button
+        class="back-btn"
+        onclick="goBackToActivePlans()">
+
+            <i class="fas fa-arrow-left"></i>
+
+        </button>
+
+        <div>
+
+            <h2>Lock Only Savings</h2>
+
+            <p>
+                Lock your money safely until maturity.
+            </p>
+
+        </div>
+
+    </header>
+
+    <div class="form-layout">
+    <div class="form-main">
+    <!-- PLAN INFORMATION -->
+
+    <section class="card">
+
+        <h3>Plan Information</h3>
+
+        <label>Plan Name</label>
+
+        <input
+        id="planName"
+        type="text"
+        placeholder="e.g Rent Savings">
+
+        <label>Purpose</label>
+
+        <div class="purpose-chips">
+
+            <button class="suggestion-btn">Rent</button>
+
+            <button class="suggestion-btn">School Fees</button>
+
+            <button class="suggestion-btn">Business</button>
+
+            <button class="suggestion-btn">Emergency</button>
+
+            <button class="suggestion-btn">Travel</button>
+
+            <button class="suggestion-btn">Investment</button>
+
+        </div>
+
+        <input
+        id="purpose"
+        type="text"
+        placeholder="Or enter your own purpose">
+
+    </section>
+
+    <!-- LOCK AMOUNT -->
+
+    <section class="card">
+
+        <h3>Lock Amount</h3>
+
+        <label>Amount</label>
+
+        <input
+        id="amount"
+        type="number"
+        placeholder="₦50,000">
+
+    </section>
+
+    <!-- LOCK DURATION -->
+
+    <section class="card">
+
+        <h3>Lock Duration</h3>
+
+        <p class="hint">
+            Minimum lock period is 21 days.
+        </p>
+
+        <select id="durationSelect" aria-label="Lock duration">
+            <option value="">Choose lock duration</option>
+            <option value="21">21 Days</option><option value="30">30 Days</option><option value="60">60 Days</option><option value="90">90 Days</option><option value="180">180 Days</option><option value="365">365 Days</option><option value="custom">Custom duration</option>
+        </select>
+        <div class="duration-grid legacy-duration" hidden>
+
+            <button class="duration-btn" data-days="21">21 Days</button>
+
+            <button class="duration-btn" data-days="30">30 Days</button>
+
+            <button class="duration-btn" data-days="60">60 Days</button>
+
+            <button class="duration-btn" data-days="90">90 Days</button>
+
+            <button class="duration-btn" data-days="180">180 Days</button>
+
+            <button class="duration-btn" data-days="365">365 Days</button>
+
+        </div>
+
+        <div id="customDurationWrap" hidden><label>Custom Duration</label>
+
+        <input
+        id="customDays"
+        type="number"
+        min="21"
+        placeholder="Enter number of days"></div>
+
+    </section>
+    </div>
+    <aside class="form-summary">
+
+    <!-- LIVE SUMMARY -->
+
+    <section class="lock-live-summary">
+
+        <h3>Lock Summary</h3>
+
+        <div class="summary-row">
+
+            <span>Purpose</span>
+
+            <strong id="summaryPurpose">
+                Not Selected
+            </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Lock Amount</span>
+
+            <strong id="summaryAmount">
+                ₦0
+            </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Duration</span>
+
+            <strong id="summaryDuration">
+                0 Days
+            </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Maturity Date</span>
+
+            <strong id="summaryDate">
+                --
+            </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Wallet Balance</span>
+
+            <strong id="walletBalance">
+                ₦0
+            </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Balance After Lock</span>
+
+            <strong id="balanceAfter">
+                ₦0
+            </strong>
+
+        </div>
+
+    </section>
+
+    </aside>
+    </div>
+    <!-- CONTINUE -->
+
+    <button
+    id="createLockPlan"
+    class="primary-btn">
+
+        Continue
+
+    </button>
+
+</div>
+
+<script src="js/api.js"></script><script src="js/auth-guard.js"></script><script src="js/storage.js"></script>
+<script src="js/lock-plan.js"></script>
+
+</body>
+</html>
