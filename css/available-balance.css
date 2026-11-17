@@ -1,0 +1,490 @@
+/*==========================================
+AVAILABLE BALANCE
+==========================================*/
+
+.page{
+    max-width:600px;
+    margin:auto;
+    padding:22px;
+    padding-bottom:120px;
+}
+
+/*==========================================
+HEADER
+==========================================*/
+
+.page-header{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:24px;
+}
+
+.back-btn{
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:14px;
+    background:#EEF3FF;
+    color:#1E4DFF;
+    font-size:18px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.back-btn:hover{
+    background:#1E4DFF;
+    color:#fff;
+}
+
+.page-header h2{
+    margin:0;
+    font-size:26px;
+    font-weight:700;
+}
+
+.page-header p{
+    margin-top:5px;
+    color:#777;
+    font-size:14px;
+}
+
+/*==========================================
+WALLET CARD
+==========================================*/
+
+.wallet-card{
+
+    background:linear-gradient(135deg,#1E4DFF,#0F2EA8);
+
+    border-radius:24px;
+
+    padding:26px;
+
+    color:#fff;
+
+    margin-bottom:24px;
+
+    box-shadow:0 20px 40px rgba(30,77,255,.25);
+
+}
+
+.wallet-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.wallet-top span{
+
+    font-size:14px;
+
+    opacity:.9;
+
+}
+
+.wallet-top h1{
+
+    margin-top:10px;
+
+    font-size:38px;
+
+    font-weight:700;
+
+}
+
+.wallet-icon{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.15);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:28px;
+
+}
+
+.wallet-growth{
+
+    margin-top:22px;
+
+    padding-top:18px;
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:14px;
+
+}
+
+/*==========================================
+CARDS
+==========================================*/
+
+.card{
+
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:22px;
+
+    margin-bottom:22px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+
+}
+
+.card h3{
+
+    margin:0 0 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+/*==========================================
+QUICK ACTIONS
+==========================================*/
+
+.action-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+}
+
+.action-card{
+
+    border:none;
+
+    background:#EEF3FF;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+}
+
+.action-card i{
+
+    font-size:24px;
+
+    color:#1E4DFF;
+
+}
+
+.action-card span{
+
+    font-weight:700;
+
+    color:#222;
+
+}
+
+.action-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(30,77,255,.15);
+
+}
+
+.action-card.disabled{
+
+    opacity:.65;
+
+    cursor:not-allowed;
+
+}
+
+.action-card small{
+
+    color:#888;
+
+}
+
+/*==========================================
+STATISTICS
+==========================================*/
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+}
+
+.stat-box{
+
+    background:#F7F9FF;
+
+    border-radius:18px;
+
+    padding:18px;
+
+}
+
+.stat-box small{
+
+    color:#777;
+
+    display:block;
+
+    margin-bottom:8px;
+
+}
+
+.stat-box h4{
+
+    margin:0;
+
+    font-size:22px;
+
+    color:#1E4DFF;
+
+}
+
+/*==========================================
+SECTION TITLE
+==========================================*/
+
+.section-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.section-title h3{
+
+    margin:0;
+
+}
+
+.view-all-btn{
+
+    border:none;
+
+    background:none;
+
+    color:#1E4DFF;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+/*==========================================
+TRANSACTIONS
+==========================================*/
+
+.transaction-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.transaction-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:#F8FAFF;
+
+}
+
+.transaction-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.transaction-icon{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    background:#EEF3FF;
+
+    color:#1E4DFF;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.transaction-title{
+
+    font-weight:700;
+
+    color:#222;
+
+}
+
+.transaction-date{
+
+    font-size:13px;
+
+    color:#888;
+
+}
+
+.credit{
+
+    color:#14A44D;
+
+    font-weight:700;
+
+}
+
+.debit{
+
+    color:#E53935;
+
+    font-weight:700;
+
+}
+
+/*==========================================
+EMPTY STATE
+==========================================*/
+
+.empty-state{
+
+    text-align:center;
+
+    padding:45px 20px;
+
+}
+
+.empty-state i{
+
+    font-size:50px;
+
+    color:#1E4DFF;
+
+    margin-bottom:18px;
+
+}
+
+.empty-state h4{
+
+    margin-bottom:10px;
+
+}
+
+.empty-state p{
+
+    color:#777;
+
+    line-height:1.6;
+
+}
+
+/*==========================================
+MOBILE
+==========================================*/
+
+@media(max-width:600px){
+
+.page{
+
+    padding:18px;
+
+}
+
+.wallet-top h1{
+
+    font-size:30px;
+
+}
+
+.action-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.stats-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.page-header h2{
+
+    font-size:22px;
+
+}
+
+}

@@ -1,0 +1,1 @@
+document.addEventListener("click",e=>{const b=e.target.closest("[data-eye]");if(!b)return;const input=document.getElementById(b.dataset.eye);if(!input)return;input.type=input.type==="password"?"text":"password";const i=b.querySelector("i");if(i)i.className=input.type==="password"?"fa-regular fa-eye":"fa-regular fa-eye-slash";});

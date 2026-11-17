@@ -1,0 +1,396 @@
+/* ======================================
+   PAGE
+====================================== */
+
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+}
+
+.security-page{
+    max-width:550px;
+    margin:auto;
+    padding:20px;
+}
+
+/* ======================================
+   HEADER
+====================================== */
+
+.security-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.back-btn{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:12px;
+    background:#ffffff;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    cursor:pointer;
+    font-size:18px;
+}
+
+.security-header h1{
+    margin:0;
+    font-size:26px;
+    font-weight:700;
+    color:#111;
+}
+
+/* ======================================
+   CARD
+====================================== */
+
+.security-card{
+    background:#fff;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* ======================================
+   ITEMS
+====================================== */
+
+.security-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 20px;
+    border-bottom:1px solid #f0f0f0;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.security-item:hover{
+    background:#f8fbff;
+}
+
+.item-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.icon{
+    width:46px;
+    height:46px;
+    border-radius:14px;
+    background:#eef4ff;
+    color:#1f5eff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+}
+
+.item-left h3{
+    margin:0;
+    font-size:16px;
+    color:#222;
+}
+
+.item-left p{
+    margin-top:4px;
+    margin-bottom:0;
+    color:#888;
+    font-size:13px;
+}
+
+.security-item i.fa-chevron-right{
+    color:#bbb;
+}
+
+/* ======================================
+   SWITCH
+====================================== */
+
+.switch{
+    position:relative;
+    display:inline-block;
+    width:52px;
+    height:28px;
+}
+
+.switch input{
+    display:none;
+}
+
+.slider{
+    position:absolute;
+    cursor:pointer;
+    inset:0;
+    background:#d6d6d6;
+    border-radius:30px;
+    transition:.3s;
+}
+
+.slider::before{
+    content:"";
+    position:absolute;
+    width:22px;
+    height:22px;
+    left:3px;
+    top:3px;
+    background:#fff;
+    border-radius:50%;
+    transition:.3s;
+}
+
+.switch input:checked + .slider{
+    background:#2563eb;
+}
+
+.switch input:checked + .slider::before{
+    transform:translateX(24px);
+}
+
+/* ======================================
+   DELETE BUTTON
+====================================== */
+
+.delete-btn{
+    width:calc(100% - 40px);
+    margin:20px;
+    border:none;
+    background:#ffe8e8;
+    color:#d60000;
+    padding:15px;
+    border-radius:14px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.delete-btn:hover{
+    background:#ffd7d7;
+}
+
+/* ======================================
+   MODALS
+====================================== */
+
+.modal{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.45);
+    z-index:999;
+}
+
+.modal-content{
+    width:90%;
+    max-width:380px;
+    background:#fff;
+    border-radius:22px;
+    padding:25px;
+    animation:popup .25s ease;
+}
+
+@keyframes popup{
+
+    from{
+        transform:scale(.9);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+
+.modal-content h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.modal-content input{
+    width:100%;
+    box-sizing:border-box;
+    margin-bottom:15px;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    font-size:15px;
+}
+
+.modal-content button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+}
+
+#updatePassword,
+#updatePin{
+    background:#2563eb;
+    color:#fff;
+    margin-bottom:12px;
+}
+
+.cancel-btn{
+    background:#ececec;
+}
+
+/* ======================================
+   TOAST
+====================================== */
+
+#toast{
+    position:fixed;
+    left:50%;
+    bottom:30px;
+    transform:translateX(-50%);
+    background:#222;
+    color:#fff;
+    padding:14px 20px;
+    border-radius:12px;
+    opacity:0;
+    visibility:hidden;
+    transition:.35s;
+    z-index:1000;
+    font-size:14px;
+}
+
+#toast.show{
+    opacity:1;
+    visibility:visible;
+    bottom:45px;
+}
+
+/* ======================================
+   MOBILE
+====================================== */
+
+@media(max-width:480px){
+
+.security-page{
+    padding:15px;
+}
+
+.security-header h1{
+    font-size:22px;
+}
+
+.icon{
+    width:42px;
+    height:42px;
+}
+
+.item-left h3{
+    font-size:15px;
+}
+
+.item-left p{
+    font-size:12px;
+}
+
+}
+
+/* ==========================================
+   CONFIRM MODAL
+========================================== */
+
+#confirmModal .modal-content{
+
+    max-width:400px;
+    text-align:center;
+
+}
+
+#confirmTitle{
+
+    font-size:24px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:15px;
+
+}
+
+#confirmMessage{
+
+    font-size:15px;
+    color:#6B7280;
+    line-height:1.7;
+    margin-bottom:25px;
+
+}
+
+#confirmModal .modal-buttons{
+
+    display:flex;
+    gap:12px;
+
+}
+
+#confirmCancel{
+
+    flex:1;
+
+    background:#E5E7EB;
+
+    color:#374151;
+
+    border:none;
+
+    border-radius:14px;
+
+    padding:14px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+#confirmContinue{
+
+    flex:1;
+
+    background:#DC2626;
+
+    color:#FFFFFF;
+
+    border:none;
+
+    border-radius:14px;
+
+    padding:14px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+#confirmContinue:hover{
+
+    background:#B91C1C;
+
+}
+body{background:linear-gradient(180deg,#eaf4fc 0,#f7f9fc 330px);color:#173d5d}.security-page{max-width:760px;margin:0 auto;padding:25px 16px 60px}.security-header{background:transparent;margin-bottom:18px}.security-header h1{font-size:23px;color:#173d5d}.security-card{background:#fff;border:1px solid #dce8f2;border-radius:20px;overflow:hidden;box-shadow:0 14px 40px rgba(18,62,96,.07)}.security-item{padding:17px 19px;border-bottom:1px solid #edf2f6;transition:.18s}.security-item:hover{background:#f7fbff}.security-item .icon{background:#eaf4ff;color:#1769c2;border-radius:12px}.security-item h3{color:#234863;font-size:12px}.security-item p{color:#8496a5;font-size:9px}.delete-btn{display:none!important}
+
+/* v1.42 unified OptiSave wordmark */
+.brand-save{color:#168fe0!important;font:inherit!important;font-weight:inherit!important;letter-spacing:inherit!important}
+.brand-opti{color:#fff!important;font:inherit!important;font-weight:inherit!important;letter-spacing:inherit!important}

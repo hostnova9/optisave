@@ -1,0 +1,101 @@
+/*==================================
+    WALLET STATS
+==================================*/
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+    margin-top:24px;
+
+}
+
+.stat-card{
+
+    background:#ffffff;
+
+    border-radius:22px;
+
+    padding:20px;
+
+    box-shadow:0 12px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.stat-card h3{
+
+    margin:0;
+
+    font-size:14px;
+
+    color:#6B7280;
+
+    font-weight:600;
+
+}
+
+.stat-card h2{
+
+    margin-top:14px;
+
+    font-size:24px;
+
+    color:#1748D6;
+
+    font-weight:700;
+
+    word-break:break-word;
+
+}
+
+/*==================================
+    PREMIUM BALANCE CARD
+==================================*/
+
+.premium-card{
+
+    margin-bottom:28px;
+
+}
+
+.premium-card h1{
+
+    margin-top:18px;
+
+    font-size:34px;
+
+    color:#fff;
+
+}
+
+/*==================================
+    MOBILE
+==================================*/
+
+@media(max-width:480px){
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .stat-card{
+
+        padding:18px;
+
+    }
+
+}

@@ -1,0 +1,269 @@
+/*====================================
+        OPTISAVE DESIGN SYSTEM
+====================================*/
+
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* Theme Variables */
+
+:root{
+
+    /* Brand */
+
+    --primary:#2563EB;
+    --primary-dark:#1D4ED8;
+
+    /* Status */
+
+    --success:#16A34A;
+    --danger:#DC2626;
+    --warning:#F59E0B;
+    --info:#0EA5E9;
+
+    /* Background */
+
+    --background:#F4F7FC;
+    --surface:#FFFFFF;
+
+    /* Text */
+
+    --text-dark:#0F172A;
+    --text:#334155;
+    --text-light:#64748B;
+
+    /* Border */
+
+    --border:#E2E8F0;
+
+    /* Radius */
+
+    --radius-sm:10px;
+    --radius:18px;
+    --radius-lg:24px;
+
+    /* Shadow */
+
+    --shadow:
+    0 10px 30px rgba(15,23,42,.08);
+
+    /* Transition */
+
+    --transition:.3s ease;
+
+    /* Spacing */
+
+    --space-xs:6px;
+    --space-sm:10px;
+    --space-md:16px;
+    --space-lg:24px;
+    --space-xl:32px;
+
+}
+
+/* Dark Mode */
+
+body.dark{
+
+    --background:#0F172A;
+
+    --surface:#1E293B;
+
+    --text-dark:#FFFFFF;
+
+    --text:#E2E8F0;
+
+    --text-light:#94A3B8;
+
+}
+
+/* Base */
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:var(--background);
+
+    color:var(--text-dark);
+
+    line-height:1.6;
+
+}
+
+/* Container */
+
+.app-container{
+
+    width:100%;
+
+    max-width:480px;
+
+    margin:auto;
+
+    min-height:100vh;
+
+    background:var(--background);
+
+}
+
+/* Typography */
+
+h1,h2,h3,h4,h5,h6{
+
+    color:var(--text-dark);
+
+    font-weight:600;
+
+}
+
+p{
+
+    color:var(--text);
+
+}
+
+small{
+
+    color:var(--text-light);
+
+}
+
+/* Links */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+/* Images */
+
+img{
+
+    display:block;
+
+    max-width:100%;
+
+}
+
+/* Buttons */
+
+button{
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+/* Forms */
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+/* List */
+
+ul{
+
+    list-style:none;
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:20px;
+
+}
+/* v1.39 OptiSave cloud-blue visual system */
+:root{
+  --primary:#2997e8;
+  --primary-dark:#157ac5;
+  --background:#eaf7ff;
+  --surface:rgba(255,255,255,.90);
+  --border:rgba(63,153,214,.18);
+}
+html,body,.app-container{
+  background:
+    radial-gradient(circle at 12% 8%,rgba(112,205,255,.34),transparent 25rem),
+    radial-gradient(circle at 88% 22%,rgba(255,255,255,.96),transparent 30rem),
+    radial-gradient(circle at 45% 78%,rgba(154,220,255,.25),transparent 28rem),
+    linear-gradient(145deg,#dff4ff 0%,#f8fcff 46%,#e8f7ff 100%) !important;
+  background-attachment:fixed !important;
+}
+.sidebar{
+  background:
+    radial-gradient(circle at 15% 4%,rgba(255,255,255,.48),transparent 13rem),
+    linear-gradient(180deg,#73c9f5 0%,#50b4eb 48%,#369edc 100%) !important;
+  color:#07385d !important;
+  box-shadow:10px 0 30px rgba(34,126,184,.16) !important;
+}
+.sidebar a,.sidebar p,.sidebar span,.sidebar small,.sidebar h1,.sidebar h2,.sidebar h3,.sidebar h4{color:#07385d !important}
+.sidebar-menu a:hover,.sidebar-menu a.active,.sidebar-menu a[aria-current="page"]{
+  background:rgba(255,255,255,.50) !important;
+  box-shadow:inset 3px 0 0 #087cc1 !important;
+}
+.card,.summary-card,.quick-action,.plan-card,.activity-card,.dashboard-card,.content-card,.settings-card{
+  background:rgba(255,255,255,.88) !important;
+  border-color:rgba(63,153,214,.16) !important;
+  box-shadow:0 12px 30px rgba(45,129,183,.09) !important;
+  backdrop-filter:blur(12px);
+}
+
+/* v1.40 accessible OptiSave sidebar + compact mobile dashboard */
+.sidebar{background:linear-gradient(180deg,#ffffff 0%,#f1f9ff 55%,#e5f5ff 100%)!important;color:#0b2545!important;box-shadow:8px 0 28px rgba(26,108,166,.14)!important}
+.sidebar-header{background:linear-gradient(135deg,#2b9eea,#78cef7)!important;color:#fff!important}
+.sidebar-header h2,.sidebar-header p{color:#fff!important}.sidebar .sidebar-menu a{color:#16324f!important}.sidebar .sidebar-menu a i{color:#1688d4!important}.sidebar .sidebar-menu a.active,.sidebar .sidebar-menu a:hover{background:#dff3ff!important;color:#0b5f99!important;box-shadow:inset 4px 0 0 #2b9eea!important}.sidebar .sidebar-menu a.active i{color:#0b78bd!important}
+@media(max-width:760px){.main-wrapper{padding:14px!important}.summary-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}.summary-card{min-height:0!important;padding:16px!important;border-radius:20px!important}.summary-card:nth-child(3){grid-column:1/-1}.summary-card h3{font-size:15px!important}.summary-card .amount,.summary-card .card-value{font-size:30px!important}.smart-banner,.promo-banner,.insight-banner{min-height:0!important;padding:18px!important;border-radius:20px!important}.dashboard-header h1{font-size:30px!important}}
+@media(max-width:760px){
+ .summary-section{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+ .summary-section>.summary-card{width:auto!important;min-width:0!important;min-height:0!important;margin:0!important;padding:16px!important}
+ .summary-section>.countdown-card{grid-column:1/-1!important}
+ .summary-section .card-header{gap:9px!important}.summary-section .summary-icon{width:42px!important;height:42px!important;min-width:42px!important}
+ .summary-section .summary-title{font-size:14px!important}.summary-section .card-body h2{font-size:28px!important;margin:10px 0 4px!important}
+ .summary-section .card-body p{font-size:12px!important}.summary-section .card-footer{margin-top:10px!important}.summary-section .action-chip{padding:9px 12px!important;font-size:13px!important}
+}
+
+/* v1.42 unified OptiSave wordmark */
+.brand-save{color:#168fe0!important;font:inherit!important;font-weight:inherit!important;letter-spacing:inherit!important}
+.brand-opti{color:#fff!important;font:inherit!important;font-weight:inherit!important;letter-spacing:inherit!important}

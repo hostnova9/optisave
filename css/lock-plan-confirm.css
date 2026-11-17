@@ -1,0 +1,226 @@
+/*==================================
+LOCK PLAN CONFIRM
+==================================*/
+
+body{
+    margin:0;
+    background:#f4f7fc;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#222;
+}
+
+.confirm-page{
+    max-width:700px;
+    margin:auto;
+    padding:20px;
+}
+
+/*==================================
+HEADER
+==================================*/
+
+.page-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.back-btn{
+    width:46px;
+    height:46px;
+    border:none;
+    border-radius:14px;
+    background:#fff;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.page-header h2{
+    margin:0;
+    color:#1846d8;
+}
+
+.page-header p{
+    margin-top:5px;
+    color:#666;
+    font-size:14px;
+}
+
+/*==================================
+CARDS
+==================================*/
+
+.review-card,
+.wallet-card{
+
+    background:#fff;
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+
+}
+
+.review-card h3,
+.wallet-card h3{
+
+    margin-top:0;
+    color:#1846d8;
+    margin-bottom:18px;
+
+}
+
+/*==================================
+ROWS
+==================================*/
+
+.review-row{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #ececec;
+
+}
+
+.review-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.review-row span{
+
+    color:#666;
+
+}
+
+.review-row strong{
+
+    color:#111;
+    font-size:15px;
+
+}
+
+/*==================================
+WALLET CARD
+==================================*/
+
+.wallet-card{
+
+    background:#1846d8;
+    color:#fff;
+
+}
+
+.wallet-card h3{
+
+    color:#fff;
+
+}
+
+.wallet-card .review-row{
+
+    border-color:rgba(255,255,255,.15);
+
+}
+
+.wallet-card span,
+.wallet-card strong{
+
+    color:#fff;
+
+}
+
+/*==================================
+WARNING
+==================================*/
+
+.warning-box{
+
+    display:flex;
+    gap:15px;
+    align-items:flex-start;
+
+    background:#fff6dc;
+
+    border-left:5px solid #ffb300;
+
+    border-radius:16px;
+
+    padding:18px;
+
+    margin-bottom:25px;
+
+}
+
+.warning-box i{
+
+    color:#ff9800;
+    font-size:24px;
+
+}
+
+.warning-box p{
+
+    margin:0;
+    line-height:1.6;
+    color:#444;
+
+}
+
+/*==================================
+BUTTON
+==================================*/
+
+.confirm-btn{
+
+    width:100%;
+
+    border:none;
+
+    border-radius:16px;
+
+    padding:18px;
+
+    background:#1846d8;
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.confirm-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/*==================================
+RESPONSIVE
+==================================*/
+
+@media(max-width:600px){
+
+.review-row{
+
+    font-size:14px;
+
+}
+
+.confirm-page{
+
+    padding:15px;
+
+}
+
+}

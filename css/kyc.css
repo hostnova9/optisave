@@ -1,0 +1,423 @@
+/* ==========================================
+   OPTISAVE
+   KYC VERIFICATION
+========================================== */
+
+:root{
+    --primary:#2563EB;
+    --primary-dark:#1F2937;
+    --bg:#F8FAFC;
+    --card:#FFFFFF;
+    --border:#E5E7EB;
+    --text:#111827;
+    --text-light:#6B7280;
+    --success:#22C55E;
+    --warning:#F59E0B;
+    --danger:#EF4444;
+    --radius:18px;
+    --shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* ==========================================
+   PAGE
+========================================== */
+
+.kyc-page{
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:30px;
+
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.kyc-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-bottom:30px;
+
+}
+
+.back-btn{
+
+    width:52px;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    box-shadow:var(--shadow);
+
+    cursor:pointer;
+
+    font-size:18px;
+
+}
+
+.kyc-header h1{
+
+    color:var(--primary-dark);
+
+    font-size:30px;
+
+}
+
+.kyc-header p{
+
+    color:var(--text-light);
+
+    margin-top:5px;
+
+}
+
+/* ==========================================
+   CARD
+========================================== */
+
+.progress-card,
+.requirements,
+.status-card{
+
+    background:var(--card);
+
+    border-radius:20px;
+
+    padding:22px;
+
+    margin-bottom:20px;
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ==========================================
+   PROGRESS
+========================================== */
+
+.progress-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:15px;
+
+    font-weight:600;
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:10px;
+
+    background:#E5E7EB;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    width:0%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #2563EB,
+        #60A5FA
+    );
+
+    border-radius:30px;
+
+    transition:.4s;
+
+}
+
+/* ==========================================
+   REQUIREMENTS
+========================================== */
+
+.requirement{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:14px 0;
+
+    border-bottom:1px solid #F1F5F9;
+
+}
+
+.requirement:last-child{
+
+    border-bottom:none;
+
+}
+
+.requirement i{
+
+    font-size:20px;
+
+}
+
+.completed{
+
+    color:var(--success);
+
+}
+
+.completed i{
+
+    color:var(--success);
+
+}
+
+/* ==========================================
+   STATUS
+========================================== */
+
+.status-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.status{
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+}
+
+.pending{
+
+    background:#FEF3C7;
+
+    color:#B45309;
+
+}
+
+.approved{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+}
+
+.failed{
+
+    background:#FEE2E2;
+
+    color:#B91C1C;
+
+}
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+.primary-btn{
+
+    width:100%;
+
+    border:none;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    padding:17px;
+
+    border-radius:16px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.primary-btn:hover{
+
+    background:#1D4ED8;
+
+}
+
+/* ==========================================
+   MODAL
+========================================== */
+
+.modal-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+}
+
+.kyc-modal{
+
+    width:94%;
+
+    max-width:430px;
+
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    box-shadow:var(--shadow);
+
+    animation:fadeUp .25s ease;
+
+}
+
+.kyc-modal h2{
+
+    color:var(--primary-dark);
+
+    margin-bottom:10px;
+
+}
+
+.kyc-modal p{
+
+    color:var(--text-light);
+
+    margin-bottom:20px;
+
+    line-height:1.6;
+
+}
+
+.kyc-modal input{
+
+    width:100%;
+
+    padding:15px;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    margin-bottom:20px;
+
+    font-size:15px;
+
+}
+
+.kyc-modal input:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+}
+
+/* ==========================================
+   ANIMATION
+========================================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+    .kyc-page{
+
+        padding:18px;
+
+    }
+
+    .kyc-header{
+
+        align-items:flex-start;
+
+    }
+
+    .kyc-header h1{
+
+        font-size:24px;
+
+    }
+
+}

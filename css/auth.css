@@ -1,0 +1,73 @@
+*{box-sizing:border-box}body{margin:0;font-family:Poppins,Segoe UI,Arial,sans-serif;color:#173b5b;background:#eef5fb}.auth-page{min-height:100vh;display:grid;grid-template-columns:minmax(340px,46%) 1fr}.auth-visual{position:relative;min-height:100vh;padding:42px;overflow:hidden;background:#071d32;color:white}.auth-visual:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,22,39,.12),rgba(4,22,39,.78)),url("../images/optisave-auth-market.png") center/cover no-repeat;transform:scale(1.02)}.auth-visual>*{position:relative;z-index:1}.brand{font-size:31px;font-weight:900;letter-spacing:-1.2px}.brand span{color:#52c5ff}.brand-sub{font-size:11px;opacity:.72}.visual-copy{position:absolute;left:42px;right:42px;bottom:56px}.visual-copy h1{font-size:42px;line-height:1.05;max-width:520px;margin:0 0 13px}.visual-copy h1 span{color:#55c8ff}.visual-copy p{font-size:14px;line-height:1.6;max-width:470px;color:#d2e5f5}.mini-benefits{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.mini-benefits span{font-size:10px;padding:9px 11px;border:1px solid rgba(255,255,255,.17);background:rgba(7,35,59,.58);backdrop-filter:blur(8px);border-radius:20px}.mini-benefits i{color:#55c8ff;margin-right:5px}.auth-main{display:flex;align-items:center;justify-content:center;padding:42px 5vw;background:radial-gradient(circle at 80% 10%,#d9efff 0,transparent 31%),#f6f9fc}.auth-card{width:min(100%,500px)}.auth-card .mobile-brand{display:none}.eyebrow{color:#1472c9;font-size:10px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase}.auth-card h2{font-size:31px;margin:8px 0 7px;color:#113957}.lead{font-size:12px;color:#758a9c;margin:0 0 25px}.field{margin-bottom:14px}.field label{display:block;font-size:10px;font-weight:800;color:#526d83;margin-bottom:7px}.input-wrap{position:relative}.input-wrap>i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#5596ca}.input-wrap input,.input-wrap select{width:100%;border:1px solid #d5e3ee;border-radius:12px;padding:13px 14px 13px 41px;background:#fff;color:#153c5b;outline:none}.input-wrap input:focus,.input-wrap select:focus{border-color:#4d9de0;box-shadow:0 0 0 3px #e3f2ff}.password-eye{position:absolute;right:12px;top:50%;transform:translateY(-50%);border:0;background:none;color:#7891a5}.row-between{display:flex;justify-content:space-between;align-items:center;font-size:10px;margin:4px 0 20px}.row-between a,.auth-link{color:#1472c9;text-decoration:none;font-weight:750}.primary-btn{width:100%;border:0;border-radius:12px;background:linear-gradient(135deg,#1478d4,#0c5faf);color:#fff;padding:14px;font-weight:850;box-shadow:0 10px 25px rgba(20,114,201,.22);cursor:pointer}.auth-footer{text-align:center;margin-top:20px;font-size:11px;color:#71889b}.secure-note{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:24px;color:#8799a8;font-size:9px}.secure-note i{color:#2e9c75}.steps{display:flex;align-items:center;margin:18px 0 25px}.step{display:flex;align-items:center;gap:6px;color:#8a9aa8;font-size:9px;font-weight:750;white-space:nowrap}.step b{width:26px;height:26px;display:grid;place-items:center;border-radius:50%;background:#e7eef4;color:#7a8d9e}.step.active{color:#1472c9}.step.active b,.step.done b{background:#1472c9;color:white}.step-line{height:1px;background:#d5e1ea;flex:1;margin:0 7px}.register-card{width:min(100%,620px)}.register-panel{display:none;animation:fade .22s ease}.register-panel.active{display:block}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.wide{grid-column:1/-1}.button-row{display:flex;gap:10px;margin-top:20px}.secondary-btn{border:1px solid #d2e0eb;background:white;color:#45667f;border-radius:12px;padding:13px 18px;font-weight:800}.button-row .primary-btn{flex:1}.password-rules{font-size:9px;color:#8295a5;margin-top:6px}.message{display:none;padding:10px 12px;border-radius:10px;font-size:10px;margin:12px 0}.message.show{display:block}.message.error{background:#fff0f0;color:#b33939}.message.success{background:#eaf9f2;color:#237a58}@keyframes fade{from{opacity:.3;transform:translateX(7px)}to{opacity:1;transform:none}}@media(max-width:850px){.auth-page{grid-template-columns:1fr}.auth-visual{display:none}.auth-main{min-height:100vh;padding:30px 18px}.auth-card .mobile-brand{display:block;margin-bottom:28px;color:#113957}.mobile-brand .brand-sub{color:#73899b}.form-grid{grid-template-columns:1fr}.wide{grid-column:1}.auth-card h2{font-size:27px}.steps{overflow:auto}.step span{display:none}}
+/* === OptiSave immersive authentication theme === */
+body{background:#06192b!important}
+.auth-page{
+ position:relative!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;
+ min-height:100vh!important;padding:38px 6vw!important;overflow:hidden!important;
+ background:
+ linear-gradient(90deg,rgba(3,18,33,.40) 0%,rgba(3,18,33,.62) 48%,rgba(3,18,33,.82) 100%),
+ url("../images/optisave-auth-market.png") center center/cover no-repeat!important
+}
+.auth-page:before{
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background:radial-gradient(circle at 70% 35%,rgba(18,133,226,.12),transparent 34%),
+ linear-gradient(180deg,rgba(4,20,36,.08),rgba(4,20,36,.30))
+}
+.auth-visual{
+ position:absolute!important;inset:0!important;display:block!important;min-height:100%!important;
+ padding:38px 5vw!important;background:none!important;pointer-events:none
+}
+.auth-visual:before{display:none!important}
+.auth-visual .brand{font-size:30px!important;text-shadow:0 3px 18px rgba(0,0,0,.35)}
+.auth-visual .brand-sub{color:#c7dced!important}
+.visual-copy{left:5vw!important;right:auto!important;bottom:7vh!important;width:min(43vw,570px)!important}
+.visual-copy h1{font-size:clamp(34px,4vw,57px)!important;letter-spacing:-2px!important;text-shadow:0 4px 22px rgba(0,0,0,.36)}
+.visual-copy p{font-size:13px!important}
+.auth-main{
+ position:relative!important;z-index:4!important;width:min(48vw,650px)!important;min-height:auto!important;
+ display:flex!important;justify-content:center!important;padding:0!important;background:transparent!important
+}
+.auth-card{
+ width:min(100%,510px)!important;padding:31px!important;border-radius:24px!important;
+ background:linear-gradient(145deg,rgba(7,35,59,.91),rgba(5,27,47,.86))!important;
+ border:1px solid rgba(87,184,255,.28)!important;
+ box-shadow:0 28px 80px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.05)!important;
+ backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important;color:#eaf6ff!important
+}
+.register-card{width:min(100%,610px)!important}
+.auth-card .eyebrow{color:#54c8ff!important}
+.auth-card h2{color:#fff!important;font-size:29px!important}
+.auth-card .lead{color:#a9c4d8!important}
+.auth-card .field label{color:#c7dcec!important}
+.auth-card .input-wrap input,.auth-card .input-wrap select{
+ background:rgba(4,25,43,.70)!important;border-color:rgba(139,196,235,.25)!important;color:#f4faff!important
+}
+.auth-card .input-wrap input::placeholder{color:#6f8da4!important}
+.auth-card .input-wrap input:focus,.auth-card .input-wrap select:focus{
+ border-color:#3aaeff!important;box-shadow:0 0 0 3px rgba(42,158,235,.14)!important
+}
+.auth-card .input-wrap>i{color:#53bdf7!important}.password-eye{color:#82a9c4!important}
+.auth-card .row-between,.auth-card .auth-footer,.auth-card .secure-note{color:#9eb8ca!important}
+.auth-card .auth-link,.auth-card .row-between a{color:#4fc5ff!important}
+.auth-card .primary-btn{background:linear-gradient(135deg,#1ba5f7,#176fe0)!important;box-shadow:0 12px 28px rgba(18,115,219,.30)!important}
+.auth-card .secondary-btn{background:rgba(255,255,255,.06)!important;border-color:rgba(143,194,230,.24)!important;color:#cde9fb!important}
+.auth-card .step{color:#7898af!important}.auth-card .step.active{color:#53c8ff!important}
+.auth-card .step b{background:rgba(255,255,255,.07)!important;color:#8fb0c7!important;border:1px solid rgba(129,186,226,.22)!important}
+.auth-card .step.active b,.auth-card .step.done b{background:#168be5!important;color:#fff!important;box-shadow:0 0 17px rgba(42,169,255,.35)!important}
+.auth-card .step-line{background:rgba(130,180,215,.22)!important}
+.auth-card #reviewBox{background:rgba(5,27,47,.62)!important;border-color:rgba(139,196,235,.22)!important;color:#c3d9e9!important}
+.auth-card .password-rules{color:#7799b1!important}
+.auth-card .mobile-brand{color:#fff!important}
+.auth-card .mobile-brand .brand-sub{color:#a7c0d2!important}
+@media(max-width:850px){
+ .auth-page{justify-content:center!important;padding:24px 16px!important;
+ background:linear-gradient(180deg,rgba(3,18,33,.60),rgba(3,18,33,.80)),url("../images/optisave-auth-market.png") center/cover no-repeat!important}
+ .auth-visual{display:none!important}.auth-main{width:100%!important}.auth-card{padding:24px 20px!important;background:rgba(5,29,50,.90)!important}
+ .auth-card .mobile-brand{display:block!important;margin-bottom:22px!important}.auth-card h2{font-size:25px!important}
+}
+/* v1.38 dedicated verification + welcome */
+.verify-resend{text-align:center;margin-top:16px;color:#9eb8ca;font-size:10px}.verify-resend small{display:block;margin-top:6px;color:#7898af}.link-button{border:0;background:none;padding:0;cursor:pointer;font:inherit}.link-button:disabled{opacity:.45;cursor:not-allowed}.welcome-card{text-align:center!important}.welcome-heart{width:58px;height:58px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;background:rgba(49,174,255,.12);border:1px solid rgba(84,200,255,.28);font-size:23px;color:#54c8ff}.welcome-copy{font-size:11px;line-height:1.75;color:#b3cada}.welcome-plans{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:20px 0}.welcome-plans>div{text-align:left;padding:13px;border-radius:13px;background:rgba(255,255,255,.045);border:1px solid rgba(139,196,235,.17)}.welcome-plans i{display:block;color:#54c8ff;font-size:17px;margin-bottom:9px}.welcome-plans b{display:block;color:#edf8ff;font-size:10px}.welcome-plans small{display:block;color:#86a6bc;font-size:8px;line-height:1.45;margin-top:4px}.welcome-motto{font-weight:800;color:#d9f2ff;font-size:11px;margin:18px 0}@media(max-width:600px){.welcome-plans{grid-template-columns:1fr}.welcome-plans>div{text-align:center}}
+
+/* v1.42 unified OptiSave wordmark */
+.brand-save{color:#168fe0!important;font:inherit!important;font-weight:inherit!important;letter-spacing:inherit!important}
+.brand-opti{color:#fff!important;font:inherit!important;font-weight:inherit!important;letter-spacing:inherit!important}
